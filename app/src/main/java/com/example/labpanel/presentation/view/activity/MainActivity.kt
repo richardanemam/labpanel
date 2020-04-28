@@ -1,7 +1,8 @@
-package com.example.labpanel
+package com.example.labpanel.presentation.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.labpanel.R
 
 class MainActivity : AppCompatActivity() {
 
