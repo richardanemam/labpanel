@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white_ffffff">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:importantForAccessibility="no"
+        android:layout_marginTop="144dp"/>
+
+    <Button
+        android:id="@+id/btn_dashboard_professor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="128dp"
+        android:text="@string/dashboard_professor_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/buttons_background"/>
+
+    <Button
+        android:id="@+id/btn_dashboard_aluno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/dashboard_aluno_btn"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@drawable/buttons_background"/>
+
+    <Button
+        android:id="@+id/btn_dashboard_sobre_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="160dp"
+        android:text="@string/dashboard_sobre_o_app"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:background="@null"/>
 </LinearLayout>

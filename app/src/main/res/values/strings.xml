@@ -2,4 +2,9 @@
 
     <string name="app_name">Labpanel</string>
 
+    <!-- DASHBOARD  -->
+    <string name="dashboard_professor_btn">professor</string>
+    <string name="dashboard_aluno_btn">aluno</string>
+    <string name="dashboard_sobre_o_app">sobre o app</string>
+
 </resources>
