@@ -8,11 +8,15 @@ import kotlinx.coroutines.launch
 
 class SplashViewModel: ViewModel() {
 
-    val mutableLiveData: MutableLiveData<SplashState> = MutableLiveData<SplashState>()
+    companion object {
+        private const val MILI_SECONDS_TIME = 3_000L
+    }
+
+    val mutableLiveData: MutableLiveData<SplashState> = MutableLiveData()
 
     init {
         GlobalScope.launch {
-            delay(Long.MAX_VALUE)
+            delay(MILI_SECONDS_TIME)
             mutableLiveData.postValue(SplashState.DashboardActivity)
         }
     }

@@ -1,6 +1,5 @@
 <resources>
 
-    <!-- SPLASH SCREEN -->
-    <string name="app_name">Lab Panel</string>
+    <string name="app_name">Labpanel</string>
 
 </resources>
