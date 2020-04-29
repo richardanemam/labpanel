@@ -1,4 +1,4 @@
-package com.example.labpanel.presentation.view.activity
+package com.labpanel.presentation.view.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.example.labpanel.R
-import com.example.labpanel.presentation.viewmodel.SplashViewModel
+import com.labpanel.R
+import com.labpanel.presentation.viewmodel.SplashViewModel
 
 class SplashActivity : AppCompatActivity() {
 

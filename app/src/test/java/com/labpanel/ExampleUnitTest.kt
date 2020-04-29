@@ -1,4 +1,4 @@
-package com.example.labpanel
+package com.labpanel
 
 import org.junit.Test
 

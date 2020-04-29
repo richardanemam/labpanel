@@ -7,7 +7,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.example.labpanel"
+        applicationId "com.labpanel"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1

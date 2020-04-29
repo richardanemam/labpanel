@@ -1,10 +1,10 @@
-package com.example.labpanel.presentation.view.activity
+package com.labpanel.presentation.view.activity
 
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.labpanel.R
+import com.labpanel.R
 
 class DashboardActivity: AppCompatActivity() {
 

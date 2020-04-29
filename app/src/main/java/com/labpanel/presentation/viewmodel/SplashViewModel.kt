@@ -1,4 +1,4 @@
-package com.example.labpanel.presentation.viewmodel
+package com.labpanel.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
