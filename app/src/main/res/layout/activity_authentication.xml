@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_ffffff">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no">
+
+            <ImageView
+                android:id="@+id/iv_authentication_logo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="144dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/logo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_authentication_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="128dp"
+                android:hint="@string/authentication_email_hint"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_authentication_logo" />
+
+            <EditText
+                android:id="@+id/et_authentication_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/authentication_password_hint"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/et_authentication_email"
+                app:layout_constraintStart_toStartOf="@+id/et_authentication_email"
+                app:layout_constraintTop_toBottomOf="@+id/et_authentication_email" />
+
+            <Button
+                android:id="@+id/btn_authentication_continue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/buttons_background"
+                android:text="@string/authentication_continue"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintEnd_toEndOf="@+id/et_authentication_email"
+                app:layout_constraintStart_toStartOf="@+id/et_authentication_email"
+                app:layout_constraintTop_toBottomOf="@+id/et_authentication_password" />
+
+            <Button
+                android:id="@+id/btn_dashboard_sobre_app"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="128dp"
+                android:background="@null"
+                android:text="@string/authentication_signup"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/et_authentication_email"
+                app:layout_constraintStart_toStartOf="@+id/et_authentication_email"
+                app:layout_constraintTop_toBottomOf="@+id/btn_authentication_continue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
