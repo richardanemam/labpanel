@@ -11,7 +11,7 @@
     <string name="authentication_email_hint">email</string>
     <string name="authentication_password_hint">senha</string>
     <string name="authentication_continue">continuar</string>
-    <string name="authentication_signup">Não possui uma conta? Registre-se</string>
+    <string name="authentication_signup">Não possui uma conta? <b>Registre-se</b></string>
     
 
 </resources>
