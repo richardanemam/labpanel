@@ -1,5 +1,6 @@
 package com.labpanel.presentation.view.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -30,8 +31,7 @@ class DashboardActivity: AppCompatActivity() {
 
     private fun initProfessorButton() {
         btnProfessor.setOnClickListener {
-            //TODO integrate with loggin screen
-            Toast.makeText(this@DashboardActivity, "TODO integrate with loggin screen", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this@DashboardActivity, AuthenticationActivity::class.java))
         }
     }
 
