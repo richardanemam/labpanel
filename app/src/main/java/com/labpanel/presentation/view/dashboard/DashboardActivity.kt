@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.labpanel.R
-import com.labpanel.presentation.view.authentication.AuthenticationActivity
+import com.labpanel.presentation.view.authentication.ProfessorLoginActivity
 
 class DashboardActivity: AppCompatActivity() {
 
@@ -32,7 +32,7 @@ class DashboardActivity: AppCompatActivity() {
 
     private fun initProfessorButton() {
         btnProfessor.setOnClickListener {
-            startActivity(Intent(this@DashboardActivity, AuthenticationActivity::class.java))
+            startActivity(Intent(this@DashboardActivity, ProfessorLoginActivity::class.java))
         }
     }
 

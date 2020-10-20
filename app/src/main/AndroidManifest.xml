@@ -28,7 +28,7 @@
             tools:ignore="LockedOrientationActivity"/>
 
         <activity
-            android:name=".presentation.view.authentication.AuthenticationActivity"
+            android:name=".presentation.view.authentication.ProfessorLoginActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
     </application>
