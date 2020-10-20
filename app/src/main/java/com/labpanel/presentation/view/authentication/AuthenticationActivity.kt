@@ -1,4 +1,4 @@
-package com.labpanel.presentation.view.activity
+package com.labpanel.presentation.view.authentication
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

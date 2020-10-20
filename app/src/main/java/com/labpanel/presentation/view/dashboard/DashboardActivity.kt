@@ -1,4 +1,4 @@
-package com.labpanel.presentation.view.activity
+package com.labpanel.presentation.view.dashboard
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.labpanel.R
+import com.labpanel.presentation.view.authentication.AuthenticationActivity
 
 class DashboardActivity: AppCompatActivity() {
 
