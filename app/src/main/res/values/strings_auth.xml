@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- PROFESSOR LOGIN -->
+    <string name="login_email_hint">email</string>
+    <string name="login_password_hint">senha</string>
+    <string name="login_continue">continuar</string>
+    <string name="login_signup">Não possui uma conta? <b>Registre-se</b></string>
+    <string name="login_forgot_password"><b>Esqueceu a senha?</b></string>
+    
+</resources>

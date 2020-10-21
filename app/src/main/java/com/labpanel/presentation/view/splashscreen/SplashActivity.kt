@@ -12,7 +12,7 @@ import com.labpanel.presentation.view.dashboard.DashboardActivity
 class SplashActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this).get(SplashViewModel::class.java)
+        ViewModelProviders.of(this)[SplashViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.labpanel.R
-import com.labpanel.presentation.view.authentication.ProfessorLoginActivity
+import com.labpanel.presentation.view.auth.login.ProfessorLoginActivity
 
 class DashboardActivity: AppCompatActivity() {
 
