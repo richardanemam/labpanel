@@ -23,7 +23,7 @@ class DashboardActivity: AppCompatActivity() {
     private fun initViews() {
         btnProfessor = findViewById(R.id.btn_dashboard_professor)
         btnAluno = findViewById(R.id.btn_dashboard_aluno)
-        btnSobreApp = findViewById(R.id.btn_dashboard_sobre_app)
+        btnSobreApp = findViewById(R.id.btn_login_register)
 
         initProfessorButton()
         initAlunoButton()

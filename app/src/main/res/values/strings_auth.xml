@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- AUTHENTICATION -->
+    <string name="auth_continue">continuar</string>
+    <string name="auth_email_hint">email</string>
+    <string name="auth_password_hint">senha</string>
+
     <!-- PROFESSOR LOGIN -->
-    <string name="login_email_hint">email</string>
-    <string name="login_password_hint">senha</string>
-    <string name="login_continue">continuar</string>
     <string name="login_signup">Não possui uma conta? <b>Registre-se</b></string>
     <string name="login_forgot_password"><b>Esqueceu a senha?</b></string>
-    
+    <string name="login_invalid_email_error">Por favor, digite um e-mail valido</string>
+    <string name="login_invalid_password_error">Por favor, digite uma senha com pelo menos 6 digitos</string>
+
+    <!-- PROFESSOR REGISTRATION -->
+    <string name="registration_name_hint">nome completo</string>
+    <string name="registration_confirm_password_hint">confirmar senha</string>
+    <string name="registration_signin_instead">Já possui uma conta? <b>Faça o login</b></string>
+
 </resources>

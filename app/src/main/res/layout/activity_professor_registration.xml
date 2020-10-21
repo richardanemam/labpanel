@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white_ffffff">
 
     <ScrollView
@@ -15,8 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:importantForAccessibility="no">
 
             <ImageView
-                android:id="@+id/iv_login_logo"
+                android:id="@+id/iv_registration_logo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
@@ -40,79 +39,91 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                app:layout_constraintBottom_toTopOf="@+id/edt_login_email"
+                app:layout_constraintBottom_toTopOf="@+id/edt_registration_name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_login_logo"
+                app:layout_constraintTop_toBottomOf="@+id/iv_registration_logo"
                 tools:visibility="visible"/>
 
-
             <EditText
-                android:id="@+id/edt_login_email"
+                android:id="@+id/edt_registration_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="128dp"
-                android:hint="@string/auth_email_hint"
                 android:importantForAutofill="no"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
+                android:hint="@string/registration_name_hint"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_login_logo" />
+                app:layout_constraintTop_toBottomOf="@id/iv_registration_logo"/>
 
             <EditText
-                android:id="@+id/edt_login_password"
-                android:layout_width="0dp"
+                android:id="@+id/edt_registration_email"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
-                android:hint="@string/auth_password_hint"
+                android:importantForAutofill="no"
+                android:inputType="textEmailAddress"
+                android:hint="@string/auth_email_hint"
+                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
+                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
+                app:layout_constraintTop_toBottomOf="@+id/edt_registration_name"/>
+
+            <EditText
+                android:id="@+id/edt_registration_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/edt_login_email"
-                app:layout_constraintStart_toStartOf="@+id/edt_login_email"
-                app:layout_constraintTop_toBottomOf="@+id/edt_login_email" />
+                android:hint="@string/auth_password_hint"
+                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
+                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
+                app:layout_constraintTop_toBottomOf="@+id/edt_registration_email"/>
 
-            <Button
-                android:id="@+id/btn_forgot_password"
-                android:layout_width="0dp"
+            <EditText
+                android:id="@+id/edt_registration_confirm_password"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
-                android:background="@android:color/transparent"
-                android:text="@string/login_forgot_password"
-                android:textAllCaps="false"
-                android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintStart_toStartOf="@+id/edt_login_email"
-                app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
-
-            <Button
-                android:id="@+id/btn_authentication_continue"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                android:importantForAutofill="no"
+                android:inputType="textPassword"
+                android:hint="@string/registration_confirm_password_hint"
+                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
+                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
+                app:layout_constraintTop_toBottomOf="@+id/edt_registration_password"/>
+
+            <Button
+                android:id="@+id/btn_registration_continue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/buttons_background"
                 android:text="@string/auth_continue"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
-                app:layout_constraintEnd_toEndOf="@+id/edt_login_email"
-                app:layout_constraintStart_toStartOf="@+id/edt_login_email"
-                app:layout_constraintTop_toBottomOf="@+id/btn_forgot_password" />
+                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
+                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
+                app:layout_constraintTop_toBottomOf="@+id/edt_registration_confirm_password" />
 
             <Button
-                android:id="@+id/btn_login_register"
+                android:id="@+id/btn_registration_login_instead"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
                 android:layout_marginBottom="16dp"
                 android:background="@android:color/transparent"
-                android:text="@string/login_signup"
+                android:text="@string/registration_signin_instead"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/edt_login_email"
-                app:layout_constraintStart_toStartOf="@+id/edt_login_email"
-                app:layout_constraintTop_toBottomOf="@+id/btn_authentication_continue" />
+                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
+                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
+                app:layout_constraintTop_toBottomOf="@+id/btn_registration_continue" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
