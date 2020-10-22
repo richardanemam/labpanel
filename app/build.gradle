@@ -48,6 +48,7 @@ dependencies {
 
     //Layout
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
 
     //Test
     testImplementation 'junit:junit:4.12'

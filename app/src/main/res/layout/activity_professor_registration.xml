@@ -84,31 +84,18 @@
                 app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
                 app:layout_constraintTop_toBottomOf="@+id/edt_registration_email"/>
 
-            <EditText
-                android:id="@+id/edt_registration_confirm_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:importantForAutofill="no"
-                android:inputType="textPassword"
-                android:hint="@string/registration_confirm_password_hint"
-                app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
-                app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
-                app:layout_constraintTop_toBottomOf="@+id/edt_registration_password"/>
-
             <Button
                 android:id="@+id/btn_registration_continue"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/buttons_background"
-                android:text="@string/auth_continue"
+                android:text="@string/registration_create_account"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="@+id/edt_registration_name"
                 app:layout_constraintStart_toStartOf="@+id/edt_registration_name"
-                app:layout_constraintTop_toBottomOf="@+id/edt_registration_confirm_password" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_registration_password" />
 
             <Button
                 android:id="@+id/btn_registration_login_instead"

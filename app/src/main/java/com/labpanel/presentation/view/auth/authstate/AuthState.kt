@@ -14,3 +14,13 @@ sealed class PasswordState {
     object ValidPassword: PasswordState()
     object InvalidPassword: PasswordState()
 }
+
+sealed class NameState {
+    object ValidName: NameState()
+    object NullOrEmptyName: NameState()
+}
+
+sealed class CurrentUserState {
+    object User: CurrentUserState()
+    object NotAUser: CurrentUserState()
+}
