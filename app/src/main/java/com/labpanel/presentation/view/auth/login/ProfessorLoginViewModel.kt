@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.labpanel.domain.auth.model.UserLoginData
 import com.labpanel.domain.auth.usecase.ProfessorLoginUseCase
 import com.labpanel.presentation.view.auth.authstate.EmailState
-import com.labpanel.presentation.view.auth.authstate.LoginState
 import com.labpanel.presentation.view.auth.authstate.PasswordState
 import com.labpanel.presentation.view.viewevents.LoadingState
 
@@ -23,9 +22,6 @@ class ProfessorLoginViewModel: ViewModel() {
     private val passwordState: MutableLiveData<PasswordState> = MutableLiveData()
     val onPasswordState: LiveData<PasswordState> = passwordState
 
-    private val loginState: MutableLiveData<LoginState> = MutableLiveData()
-    val onLoginState: LiveData<LoginState> = loginState
-
     fun showLoading() {
         loadingState.value = LoadingState.Show
     }
@@ -37,5 +33,4 @@ class ProfessorLoginViewModel: ViewModel() {
     fun validateUserLoginData(userLoginData: UserLoginData) {
         useCase.validateUserLoginData(userLoginData)
     }
-
 }

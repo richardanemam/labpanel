@@ -92,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/buttons_background"
-                android:text="@string/auth_continue"
+                android:text="@string/login_continue"
                 android:textAllCaps="false"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintEnd_toEndOf="@+id/edt_login_email"

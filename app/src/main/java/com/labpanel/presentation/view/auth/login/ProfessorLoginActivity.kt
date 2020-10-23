@@ -8,6 +8,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.labpanel.R
 import com.labpanel.databinding.ActivityProfessorLoginBinding
 import com.labpanel.domain.auth.model.UserLoginData
@@ -16,9 +21,14 @@ import com.labpanel.presentation.view.auth.authstate.PasswordState
 import com.labpanel.presentation.view.auth.registration.ProfessorRegistrationActivity
 import com.labpanel.presentation.view.viewevents.LoadingState
 
-class ProfessorLoginActivity: AppCompatActivity() {
+
+class ProfessorLoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityProfessorLoginBinding
+    private lateinit var auth: FirebaseAuth
+    private lateinit var authStateListener: AuthStateListener
+    private var isValidEmail = false
+    private var isValidPassword = false
     private val viewModel by lazy {
         ViewModelProviders.of(this)[ProfessorLoginViewModel::class.java]
     }
@@ -28,12 +38,19 @@ class ProfessorLoginActivity: AppCompatActivity() {
         binding = ActivityProfessorLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        auth = Firebase.auth
 
         subscribeUI()
         initViews()
     }
 
+    override fun onStart() {
+        super.onStart()
+        auth.addAuthStateListener(authStateListener)
+    }
+
     private fun subscribeUI() {
+        subscribeCurrentUserState()
         subscribeLoadingEvent()
         subscribeEmailValidation()
         subscribePasswordValidation()
@@ -44,9 +61,19 @@ class ProfessorLoginActivity: AppCompatActivity() {
         createAnAccount()
     }
 
+
+    private fun subscribeCurrentUserState() {
+        authStateListener = AuthStateListener {
+            if (auth.currentUser != null) {
+                Toast.makeText(this, "logged in from subscribeCurrentUserState", Toast.LENGTH_LONG).show()
+                //TODO Send to profile screen
+            }
+        }
+    }
+
     private fun subscribeLoadingEvent() {
         viewModel.onLoadingState.observe(this, Observer {
-            when(it) {
+            when (it) {
                 LoadingState.Show -> binding.progressBar.visibility = VISIBLE
                 LoadingState.Hide -> binding.progressBar.visibility = INVISIBLE
             }
@@ -55,11 +82,15 @@ class ProfessorLoginActivity: AppCompatActivity() {
 
     private fun subscribeEmailValidation() {
         viewModel.onEmailState.observe(this, Observer {
-            when(it) {
-                EmailState.ValidEmail -> Toast.makeText(this, "email valido", Toast.LENGTH_SHORT).show()
+            when (it) {
+                EmailState.ValidEmail -> {
+                    isValidEmail = true
+                    signIn()
+                }
                 EmailState.InvalidEmail -> {
                     viewModel.hideLoading()
-                    binding.edtLoginEmail.error = getString(R.string.login_invalid_email_error)
+                    isValidEmail = false
+                    binding.edtLoginEmail.error = getString(R.string.auth_invalid_email_error)
                     binding.edtLoginEmail.requestFocus()
                 }
             }
@@ -68,11 +99,15 @@ class ProfessorLoginActivity: AppCompatActivity() {
 
     private fun subscribePasswordValidation() {
         viewModel.onPasswordState.observe(this, Observer {
-            when(it) {
-                PasswordState.ValidPassword ->  Toast.makeText(this, "senha valido", Toast.LENGTH_SHORT).show()
+            when (it) {
+                PasswordState.ValidPassword -> {
+                    isValidPassword = true
+                    signIn()
+                }
                 PasswordState.InvalidPassword -> {
                     viewModel.hideLoading()
-                    binding.edtLoginPassword.error = getString(R.string.login_invalid_password_error)
+                    isValidPassword = false
+                    binding.edtLoginPassword.error = getString(R.string.auth_invalid_password_error)
                     binding.edtLoginPassword.requestFocus()
                 }
             }
@@ -86,9 +121,32 @@ class ProfessorLoginActivity: AppCompatActivity() {
         }
     }
 
+    private fun signIn() {
+        if (isValidEmail && isValidPassword) {
+            auth.signInWithEmailAndPassword(
+                binding.edtLoginEmail.text.toString().trim(),
+                binding.edtLoginPassword.text.toString().trim()
+            )
+                .addOnCompleteListener(this, OnCompleteListener {
+                    if(it.isSuccessful) {
+                        Toast.makeText(this, "logged in from input", Toast.LENGTH_LONG).show()
+                        //TODO intent to
+                    } else {
+                        Toast.makeText(this, "failed to sign in", Toast.LENGTH_LONG).show()
+                    }
+                })
+
+        }
+    }
+
     private fun createAnAccount() {
         binding.btnLoginRegister.setOnClickListener {
-            startActivity(Intent(this@ProfessorLoginActivity, ProfessorRegistrationActivity::class.java))
+            startActivity(
+                Intent(
+                    this@ProfessorLoginActivity,
+                    ProfessorRegistrationActivity::class.java
+                )
+            )
         }
     }
 
@@ -99,5 +157,4 @@ class ProfessorLoginActivity: AppCompatActivity() {
         )
         viewModel.validateUserLoginData(userLoginData)
     }
-
 }

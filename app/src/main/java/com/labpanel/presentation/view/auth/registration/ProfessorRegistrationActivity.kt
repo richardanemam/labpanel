@@ -46,7 +46,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        loginInstead()
+        clickToLoginInstead()
         clickToCreateNewAccount()
     }
 
@@ -121,7 +121,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
             )
                 .addOnCompleteListener(this, OnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        //TODO abrir tela de profile
+                        //TODO abrir tela de profile e salvar dados de usuário
                         viewModel.hideLoading()
                         Toast.makeText(this, "registrado com sucesso", Toast.LENGTH_LONG).show()
                     } else {
@@ -141,7 +141,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
         viewModel.validateUserRegistrationData(userRegistrationData)
     }
 
-    private fun loginInstead() {
+    private fun clickToLoginInstead() {
         binding.btnRegistrationLoginInstead.setOnClickListener {
             finish()
         }
