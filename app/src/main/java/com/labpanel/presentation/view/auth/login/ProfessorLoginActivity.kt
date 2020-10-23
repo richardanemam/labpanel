@@ -1,10 +1,12 @@
 package com.labpanel.presentation.view.auth.login
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,7 +22,6 @@ import com.labpanel.presentation.view.auth.authstate.EmailState
 import com.labpanel.presentation.view.auth.authstate.PasswordState
 import com.labpanel.presentation.view.auth.registration.ProfessorRegistrationActivity
 import com.labpanel.presentation.view.viewevents.LoadingState
-
 
 class ProfessorLoginActivity : AppCompatActivity() {
 
@@ -61,11 +62,11 @@ class ProfessorLoginActivity : AppCompatActivity() {
         createAnAccount()
     }
 
-
     private fun subscribeCurrentUserState() {
         authStateListener = AuthStateListener {
             if (auth.currentUser != null) {
-                Toast.makeText(this, "logged in from subscribeCurrentUserState", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "logged in from subscribeCurrentUserState", Toast.LENGTH_LONG)
+                    .show()
                 //TODO Send to profile screen
             }
         }
@@ -128,11 +129,12 @@ class ProfessorLoginActivity : AppCompatActivity() {
                 binding.edtLoginPassword.text.toString().trim()
             )
                 .addOnCompleteListener(this, OnCompleteListener {
-                    if(it.isSuccessful) {
+                    if (it.isSuccessful) {
                         Toast.makeText(this, "logged in from input", Toast.LENGTH_LONG).show()
                         //TODO intent to
                     } else {
-                        Toast.makeText(this, "failed to sign in", Toast.LENGTH_LONG).show()
+                        viewModel.hideLoading()
+                        nonExistentAccount()
                     }
                 })
 
@@ -156,5 +158,23 @@ class ProfessorLoginActivity : AppCompatActivity() {
             password = binding.edtLoginPassword.text.toString().trim()
         )
         viewModel.validateUserLoginData(userLoginData)
+    }
+
+    private fun nonExistentAccount() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(R.string.login_non_existent_account_dialog_title)
+        builder.setMessage(R.string.login_non_existent_account_dialog_messagem)
+        builder.setPositiveButton(R.string.login_non_existent_account_dialog_positive_btn) { _: DialogInterface, _: Int ->
+            startActivity(
+                Intent(
+                    this@ProfessorLoginActivity,
+                    ProfessorRegistrationActivity::class.java
+                )
+            )
+        }
+        builder.setNegativeButton(R.string.login_non_existent_account_dialog_negative_btn) { dialogInterface: DialogInterface, _: Int ->
+            dialogInterface.cancel()
+        }
+        builder.create().show()
     }
 }

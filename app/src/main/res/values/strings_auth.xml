@@ -2,15 +2,19 @@
 <resources>
 
     <!-- AUTHENTICATION -->
-    <string name="auth_email_hint">email</string>
+    <string name="auth_email_hint">professor@ufabc.edu.br</string>
     <string name="auth_password_hint">senha</string>
-    <string name="auth_invalid_email_error">Por favor, digite um e-mail valido</string>
+    <string name="auth_invalid_email_error">Por favor, digite um e-mail com o domínio ufabc.edu.br</string>
     <string name="auth_invalid_password_error">Por favor, digite uma senha com pelo menos 6 digitos</string>
 
     <!-- PROFESSOR LOGIN -->
     <string name="login_continue">continuar</string>
     <string name="login_signup">Não possui uma conta? <b>Registre-se</b></string>
     <string name="login_forgot_password"><b>Esqueceu a senha?</b></string>
+    <string name="login_non_existent_account_dialog_title">Conta de usuário não existente</string>
+    <string name="login_non_existent_account_dialog_messagem">Não foi possível encontrar uma conta associada a este e-mail. Gostaria de criar uma conta de usuário?</string>
+    <string name="login_non_existent_account_dialog_positive_btn">sim</string>
+    <string name="login_non_existent_account_dialog_negative_btn">não</string>
 
     <!-- PROFESSOR REGISTRATION -->
     <string name="registration_name_hint">nome completo</string>
