@@ -56,6 +56,7 @@
                 android:hint="@string/auth_email_hint"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
+                android:imeOptions="actionNext"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iv_login_logo" />
@@ -68,6 +69,7 @@
                 android:hint="@string/auth_password_hint"
                 android:importantForAutofill="no"
                 android:inputType="textPassword"
+                android:imeOptions="actionDone"
                 app:layout_constraintEnd_toEndOf="@+id/edt_login_email"
                 app:layout_constraintStart_toStartOf="@+id/edt_login_email"
                 app:layout_constraintTop_toBottomOf="@+id/edt_login_email" />

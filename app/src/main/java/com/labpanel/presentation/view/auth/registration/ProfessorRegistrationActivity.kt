@@ -1,13 +1,16 @@
 package com.labpanel.presentation.view.auth.registration
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.labpanel.R
@@ -116,29 +119,37 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     private fun createNewAccount() {
         if (isValidName && isValidEmail && isValidPassword) {
             auth.createUserWithEmailAndPassword(
-                binding.edtRegistrationEmail.text.toString().trim(),
-                binding.edtRegistrationPassword.text.toString().trim()
+                getUserInputData().email,
+                getUserInputData().password
             )
                 .addOnCompleteListener(this, OnCompleteListener { task ->
                     if (task.isSuccessful) {
                         //TODO abrir tela de profile e salvar dados de usuário
                         viewModel.hideLoading()
+                        updateUserProfile()
                         Toast.makeText(this, "registrado com sucesso", Toast.LENGTH_LONG).show()
                     } else {
                         viewModel.hideLoading()
-                        Toast.makeText(this, "erro no registro", Toast.LENGTH_LONG).show()
+                        tryLater()
                     }
                 })
         }
     }
 
-    private fun sendUserLoginDataToValidation() {
-        val userRegistrationData = UserRegistrationData(
+    private fun updateUserProfile() {
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName(getUserInputData().name)
+            .build()
+
+        auth.currentUser?.updateProfile(profileUpdates)
+    }
+
+    private fun getUserInputData(): UserRegistrationData {
+        return UserRegistrationData(
             name = binding.edtRegistrationName.text.toString().trim(),
             email = binding.edtRegistrationEmail.text.toString().trim(),
             password = binding.edtRegistrationPassword.text.toString().trim()
         )
-        viewModel.validateUserRegistrationData(userRegistrationData)
     }
 
     private fun clickToLoginInstead() {
@@ -150,8 +161,17 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     private fun clickToCreateNewAccount() {
         binding.btnRegistrationContinue.setOnClickListener {
             viewModel.showLoading()
-            sendUserLoginDataToValidation()
+            viewModel.validateUserRegistrationData(getUserInputData())
         }
+    }
+
+    private fun tryLater() {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(R.string.registration_error)
+        builder.setPositiveButton(R.string.registration_error_btn_text) { _: DialogInterface, _: Int ->
+           finish()
+        }
+        builder.create().show()
     }
 
     override fun onBackPressed() {

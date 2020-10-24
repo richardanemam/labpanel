@@ -23,5 +23,8 @@
     <string name="registration_cancel">cancelar</string>
     <string name="registration_create_account">criar conta</string>
     <string name="registration_empty_name_input_error">Por favor, insira um nome</string>
+    <string name="registration_error">Não foi possível realizar o cadastro, tente novamente mais tarde</string>
+    <string name="registration_error_btn_text">OK</string>
+
 
 </resources>

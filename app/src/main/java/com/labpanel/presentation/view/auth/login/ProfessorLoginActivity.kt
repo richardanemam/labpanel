@@ -131,7 +131,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this, OnCompleteListener {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "logged in from input", Toast.LENGTH_LONG).show()
-                        //TODO intent to
+                        //TODO intent to profile
                     } else {
                         viewModel.hideLoading()
                         nonExistentAccount()
