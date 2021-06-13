@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.labpanel.R
 import com.labpanel.presentation.view.auth.login.ProfessorLoginActivity
 
-class DashboardActivity: AppCompatActivity() {
+class  DashboardActivity: AppCompatActivity() {
 
     private lateinit var btnProfessor: Button
     private lateinit var btnAluno: Button
