@@ -7,7 +7,7 @@
     <string name="dashboard_aluno_btn">aluno</string>
     <string name="dashboard_sobre_o_app">sobre o app</string>
 
-
-    
+    <!-- PROFILE -->
+    <string name="profile_adicionar_novas_vagas">adicionar novas vagas</string>
 
 </resources>
