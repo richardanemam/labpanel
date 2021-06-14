@@ -21,6 +21,7 @@ import com.labpanel.domain.auth.model.UserLoginData
 import com.labpanel.presentation.view.auth.authstate.EmailState
 import com.labpanel.presentation.view.auth.authstate.PasswordState
 import com.labpanel.presentation.view.auth.registration.ProfessorRegistrationActivity
+import com.labpanel.presentation.view.profile.ProfileActivity
 import com.labpanel.presentation.view.viewevents.LoadingState
 
 class ProfessorLoginActivity : AppCompatActivity() {
@@ -65,9 +66,8 @@ class ProfessorLoginActivity : AppCompatActivity() {
     private fun subscribeCurrentUserState() {
         authStateListener = AuthStateListener {
             if (auth.currentUser != null) {
-                Toast.makeText(this, "logged in from subscribeCurrentUserState", Toast.LENGTH_LONG)
-                    .show()
-                //TODO Send to profile screen
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
             }
         }
     }

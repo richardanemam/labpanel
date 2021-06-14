@@ -41,7 +41,7 @@ class AlertDialogBuilder private constructor(val builder: AlertDialog.Builder) {
 
         fun neutralButton(text: Int): Builder {
             builder.apply {
-                setNeutralButton(text) { dialogInterface: DialogInterface, i: Int ->
+                setNeutralButton(text) { dialogInterface: DialogInterface, _: Int ->
                     dialogInterface.cancel()
                 }
             }
