@@ -16,11 +16,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_id"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/rv_profile_openings"/>
+            android:layout_height="?attr/actionBarSize"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -36,7 +32,7 @@
         tools:itemCount="20"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/fab_profile_opening_registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
