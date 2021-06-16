@@ -17,7 +17,20 @@
     <string name="opening_registration_opening_title">Título da vaga</string>
     <string name="opening_registration_description">Descrição da vaga</string>
     <string name="opening_registration_activities">Atividades</string>
-    <string name="opening_registration_prerequisite">Pré-requisito</string>
+    <string name="opening_registration_prerequisite">Pré-requisitos</string>
+    <string name="opening_registration_email">E-mail de contato</string>
+    <string name="opening_registration_btn_register">Cadastrar vaga</string>
+    <string name="opening_registration_degrees_title">Cursos</string>
+    <string-array name="degrees_array">
+        <item>Ciência da Computação</item>
+        <item>Bacharel em Ciência e Tecnologia</item>
+        <item>Biologia</item>
+        <item>Química</item>
+        <item>Física</item>
+        <item>Matemática</item>
+        <item>Neurociência</item>
+        <item>Filosofia</item>
+    </string-array>
 
 
 </resources>

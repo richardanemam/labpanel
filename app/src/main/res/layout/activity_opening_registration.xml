@@ -28,15 +28,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:importantForAccessibility="no">
 
             <LinearLayout
                 android:id="@+id/ll_opening_registration_title_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -67,8 +68,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintStart_toStartOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_title_container">
@@ -99,8 +100,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintStart_toStartOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_description_container">
@@ -131,8 +132,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="16dp"
-                android:layout_marginTop="16dp"
                 android:orientation="vertical"
+                android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintStart_toStartOf="@+id/ll_opening_registration_title_container"
                 app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_activities_container">
@@ -141,7 +142,7 @@
                     android:id="@+id/tv_opening_registration_prerequisite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:labelFor="@id/edt_opening_registration_activities"
+                    android:labelFor="@id/edt_opening_registration_prerequisite"
                     android:paddingHorizontal="16dp"
                     android:text="@string/opening_registration_prerequisite"
                     android:textSize="18sp"
@@ -157,6 +158,84 @@
                     android:inputType="text"
                     android:maxLines="15" />
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_opening_registration_email_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="16dp"
+                android:orientation="vertical"
+                android:importantForAccessibility="no"
+                app:layout_constraintEnd_toEndOf="@+id/ll_opening_registration_title_container"
+                app:layout_constraintStart_toStartOf="@+id/ll_opening_registration_title_container"
+                app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_prerequisite_container">
+
+                <TextView
+                    android:id="@+id/tv_opening_registration_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/edt_opening_registration_email"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/opening_registration_email"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edt_opening_registration_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:autofillHints="@string/opening_registration_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="15" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_opening_registration_degrees_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="16dp"
+                android:orientation="vertical"
+                android:importantForAccessibility="no"
+                app:layout_constraintEnd_toEndOf="@+id/ll_opening_registration_title_container"
+                app:layout_constraintStart_toStartOf="@+id/ll_opening_registration_title_container"
+                app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_email_container">
+
+                <TextView
+                    android:id="@+id/tv_opening_registration_degrees"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@+id/sp_opening_registration_courses"
+                    android:paddingHorizontal="16dp"
+                    android:text="@string/opening_registration_degrees_title"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/sp_opening_registration_courses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginTop="16dp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_opening_registration_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/buttons_background"
+                android:text="@string/opening_registration_btn_register"
+                android:textAllCaps="false"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_opening_registration_degrees_container" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
