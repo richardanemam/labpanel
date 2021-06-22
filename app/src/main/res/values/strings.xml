@@ -10,7 +10,7 @@
     <!-- PROFILE -->
     <string name="profile_vagas">vagas disponíveis</string>
     <string name="profile_adicionar_novas_vagas">adicionar novas vagas</string>
-    <string name="title_activity_opening_registration">OpeningRegistrationActivity</string>
+    <string name="profile_my_openings">Minhas vagas</string>
 
     <!-- OPENING REGISTRATION -->
     <string name="opening_registration_toolbar_title">Credenciar nova vaga</string>
