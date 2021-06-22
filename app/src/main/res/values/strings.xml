@@ -21,6 +21,11 @@
     <string name="opening_registration_email">E-mail de contato</string>
     <string name="opening_registration_btn_register">Cadastrar vaga</string>
     <string name="opening_registration_degrees_title">Cursos</string>
+    <string name="opening_registration_title_error">Por favor, insira um título para a vaga</string>
+    <string name="opening_registration_description_error">Por favor, insira uma descrição para a vaga</string>
+    <string name="opening_registration_activities_error">Por favor, insira as atividades à serem realizadas</string>
+    <string name="opening_registration_prerequisite_error">Por favor, insira os pré-requisitos</string>
+    <string name="opening_registration_email_error">Por favor, insira um e-mail de contato válido</string>
     <string-array name="degrees_array">
         <item>Ciência da Computação</item>
         <item>Bacharel em Ciência e Tecnologia</item>

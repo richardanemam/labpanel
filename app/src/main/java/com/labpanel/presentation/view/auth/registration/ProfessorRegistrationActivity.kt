@@ -124,7 +124,6 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
             )
                 .addOnCompleteListener(this, OnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        //TODO abrir tela de profile e salvar dados de usuário
                         viewModel.hideLoading()
                         updateUserProfile()
                         Toast.makeText(this, "registrado com sucesso", Toast.LENGTH_LONG).show()
