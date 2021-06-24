@@ -14,6 +14,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.labpanel.R
+import com.labpanel.domain.auth.helper.UserAuthHelper
 import com.labpanel.domain.auth.model.NewOpeningRegistrationModel
 
 class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -31,6 +32,10 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     private val openingDataBase by lazy { FirebaseDatabase.getInstance() }
     private val openingDbReference by lazy { openingDataBase.getReference("RegisteredOpenings") }
     private lateinit var degree: String
+
+    companion object {
+        private const val PATH_STRING = "openings"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +107,9 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     private fun addDataToFirebase(opening: NewOpeningRegistrationModel) {
         openingDbReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                openingDbReference.child("openings").child(opening.title).setValue(opening)
+                UserAuthHelper.getFirebaseAuth().currentUser?.uid?.let { userId ->
+                    openingDbReference.child(PATH_STRING).child(userId).setValue(opening)
+                }
                 Toast.makeText(this@OpeningRegistrationActivity, "Success", Toast.LENGTH_LONG).show()
             }
 
