@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -27,6 +29,7 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     private val edtPrerequisite by lazy { findViewById<EditText>(R.id.edt_opening_registration_prerequisite) }
     private val edtEmail by lazy { findViewById<EditText>(R.id.edt_opening_registration_email) }
     private val btnRegister by lazy { findViewById<Button>(R.id.btn_opening_registration_register) }
+    private val clSnackbar by lazy { findViewById<ConstraintLayout>(R.id.cl_opening_registration_parent_view) }
 
     private val viewModel by lazy { ViewModelProviders.of(this)[OpeningRegistrationViewModel::class.java] }
     private val openingDataBase by lazy { FirebaseDatabase.getInstance() }
@@ -105,19 +108,29 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     }
 
     private fun addDataToFirebase(opening: NewOpeningRegistrationModel) {
-        openingDbReference.addValueEventListener(object: ValueEventListener {
+        openingDbReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 UserAuthHelper.getFirebaseAuth().currentUser?.uid?.let { userId ->
-                    openingDbReference.child(PATH_STRING).child(userId).setValue(opening)
+                    openingDbReference.child(PATH_STRING).child(userId).child(opening.title)
+                        .setValue(opening)
                 }
-                Toast.makeText(this@OpeningRegistrationActivity, "Success", Toast.LENGTH_LONG).show()
+                showAddValueEventFeedback(getString(R.string.opening_registration_feedback_success_response))
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@OpeningRegistrationActivity, error.message, Toast.LENGTH_LONG).show()
+                showAddValueEventFeedback(getString(R.string.opening_registration_feedback_error_response))
             }
-
         })
+    }
+
+    private fun showAddValueEventFeedback(feedbackMessage: String) {
+        val feedbackSnackBar =
+            Snackbar.make(clSnackbar, feedbackMessage, Snackbar.LENGTH_INDEFINITE)
+        feedbackSnackBar.setAction(getString(R.string.opening_registration_feedback_btn)) {
+            finish()
+            feedbackSnackBar.dismiss()
+        }
+        feedbackSnackBar.show()
     }
 
     private fun handleEmptyTitleInput() {
