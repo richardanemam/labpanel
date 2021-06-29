@@ -1,13 +1,20 @@
 package com.labpanel.presentation.view.profile
 
 import androidx.lifecycle.ViewModel
+import com.labpanel.data.professorrepository.ProfessorRepository
 import java.lang.StringBuilder
 import java.util.*
 
-class ProfileViewModel: ViewModel() {
+class ProfileViewModel(repository: ProfessorRepository): ViewModel() {
+
+
 
     companion object {
         private const val FIRST_POSITION = 0
+    }
+
+    fun getOpenings() {
+
     }
 
     fun getInitials(name: String): String {

@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.labpanel.domain.auth.helper.EmailValidationHelper
-import com.labpanel.domain.auth.model.NewOpeningRegistrationModel
+import com.labpanel.domain.model.OpeningModel
 
 class OpeningRegistrationViewModel: ViewModel() {
 
@@ -36,9 +36,9 @@ class OpeningRegistrationViewModel: ViewModel() {
     }
 
     private fun getOpening(title: String, description: String, activities: String,
-                           prerequisites: String, email: String, degree: String): NewOpeningRegistrationModel {
+                           prerequisites: String, email: String, degree: String): OpeningModel {
 
-        return NewOpeningRegistrationModel(title = title, description = description,
+        return OpeningModel(title = title, description = description,
             activities = activities, prerequisites = prerequisites, email = email, degree = degree)
     }
 

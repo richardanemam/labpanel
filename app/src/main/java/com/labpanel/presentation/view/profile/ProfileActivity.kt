@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +18,7 @@ import com.labpanel.R
 import com.labpanel.domain.auth.helper.UserAuthHelper
 import com.labpanel.presentation.view.listener.DetailsListener
 import com.labpanel.presentation.view.openingregistration.OpeningRegistrationActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class ProfileActivity : AppCompatActivity(), DetailsListener {
@@ -30,7 +30,7 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
     private val registrationBtn by lazy { findViewById<FloatingActionButton>(R.id.fab_profile_opening_registration) }
     private val rvOpenings by lazy { findViewById<RecyclerView>(R.id.rv_profile_openings) }
 
-    private val viewModel by lazy { ViewModelProviders.of(this)[ProfileViewModel::class.java] }
+    private val viewModel: ProfileViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

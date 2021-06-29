@@ -13,7 +13,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:fullBackupContent="true">
+        android:fullBackupContent="true"
+        android:name=".mainapplication.MainApplication">
 
         <activity
             android:name="com.labpanel.presentation.view.splashscreen.SplashActivity"

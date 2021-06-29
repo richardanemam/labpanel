@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.labpanel.R
 import com.labpanel.domain.auth.helper.UserAuthHelper
-import com.labpanel.domain.auth.model.NewOpeningRegistrationModel
+import com.labpanel.domain.model.OpeningModel
 
 class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -107,7 +107,7 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
         }
     }
 
-    private fun addDataToFirebase(opening: NewOpeningRegistrationModel) {
+    private fun addDataToFirebase(opening: OpeningModel) {
         openingDbReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 UserAuthHelper.getFirebaseAuth().currentUser?.uid?.let { userId ->
