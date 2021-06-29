@@ -3,8 +3,8 @@ package com.labpanel.feature.professor.domain.usecase
 import androidx.lifecycle.MutableLiveData
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.professor.domain.model.UserLoginData
-import com.labpanel.feature.professor.presentation.view.auth.authstate.EmailState
-import com.labpanel.feature.professor.presentation.view.auth.authstate.PasswordState
+import com.labpanel.feature.professor.domain.states.EmailState
+import com.labpanel.feature.professor.domain.states.PasswordState
 
 class ProfessorLoginUseCase(
     private val emailState: MutableLiveData<EmailState>,

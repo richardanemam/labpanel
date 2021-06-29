@@ -18,8 +18,8 @@ import com.google.firebase.ktx.Firebase
 import com.labpanel.R
 import com.labpanel.databinding.ActivityProfessorLoginBinding
 import com.labpanel.feature.professor.domain.model.UserLoginData
-import com.labpanel.feature.professor.presentation.view.auth.authstate.EmailState
-import com.labpanel.feature.professor.presentation.view.auth.authstate.PasswordState
+import com.labpanel.feature.professor.domain.states.EmailState
+import com.labpanel.feature.professor.domain.states.PasswordState
 import com.labpanel.feature.professor.presentation.view.auth.registration.ProfessorRegistrationActivity
 import com.labpanel.feature.professor.presentation.view.profile.ProfileActivity
 import com.labpanel.feature.app.presentation.view.viewevents.LoadingState

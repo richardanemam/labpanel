@@ -3,13 +3,13 @@ package com.labpanel.feature.professor.domain.usecase
 import androidx.lifecycle.MutableLiveData
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.professor.domain.model.UserRegistrationData
-import com.labpanel.feature.professor.presentation.view.auth.authstate.EmailState
-import com.labpanel.feature.professor.presentation.view.auth.authstate.NameState
-import com.labpanel.feature.professor.presentation.view.auth.authstate.PasswordState
+import com.labpanel.feature.professor.domain.states.EmailState
+import com.labpanel.feature.professor.domain.states.NameState
+import com.labpanel.feature.professor.domain.states.PasswordState
 
 class ProfessorRegistrationUseCase(private val  nameState: MutableLiveData<NameState>,
-    private val emailState: MutableLiveData<EmailState>,
-    private val passwordState: MutableLiveData<PasswordState>) {
+                                   private val emailState: MutableLiveData<EmailState>,
+                                   private val passwordState: MutableLiveData<PasswordState>) {
 
     fun validateUserRegistrationData(userRegistrationData: UserRegistrationData) {
         validateName(userRegistrationData.name)

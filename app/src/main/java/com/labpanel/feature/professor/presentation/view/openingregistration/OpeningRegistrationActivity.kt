@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.labpanel.R
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.professor.domain.states.OpeningDataState
 
 class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 

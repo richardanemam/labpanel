@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.labpanel.feature.app.domain.helper.EmailValidationHelper
 import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.professor.domain.states.OpeningDataState
 
 class OpeningRegistrationViewModel: ViewModel() {
 
