@@ -21,3 +21,8 @@ sealed class OpeningDataState {
     object InvalidOpeningDataState : OpeningDataState()
     data class ValidOpeningDataState(val opening: OpeningModel): OpeningDataState()
 }
+
+sealed class OpeningsState {
+    object UnavailableOpenings: OpeningsState()
+    data class AvailableOpenings(val openings: List<OpeningModel>): OpeningsState()
+}

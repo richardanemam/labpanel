@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,9 +20,12 @@ import com.google.firebase.ktx.Firebase
 import com.labpanel.R
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.app.domain.listener.DetailsListener
+import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.presentation.view.adapter.OpeningsAdapter
+import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.professor.domain.states.OpeningsState
 import com.labpanel.feature.professor.presentation.view.openingregistration.OpeningRegistrationActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class ProfileActivity : AppCompatActivity(), DetailsListener {
 
@@ -29,6 +35,7 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
     private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar_id) }
     private val registrationBtn by lazy { findViewById<FloatingActionButton>(R.id.fab_profile_opening_registration) }
     private val rvOpenings by lazy { findViewById<RecyclerView>(R.id.rv_profile_openings) }
+    private val progressBar by lazy { findViewById<ProgressBar>(R.id.pb_profile) }
 
     private val viewModel: ProfileViewModel by viewModel()
 
@@ -36,13 +43,42 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
         initViews()
+        subscribeUI()
+        viewModel.getOpenings()
     }
 
     private fun initViews() {
         setUpToolbar()
         setUpProfile()
         clickToRegister()
-        setUpOpeningsRecyclerView()
+
+    }
+
+    private fun subscribeUI() {
+        subscribeOpenings()
+        subscribeLoading()
+    }
+
+    private fun subscribeOpenings() {
+        viewModel.onOpeningsState.observe(this, {
+            when (it) {
+                is OpeningsState.AvailableOpenings -> {
+                    setUpOpeningsRecyclerView(it.openings)
+                }
+                OpeningsState.UnavailableOpenings -> {
+                    Toast.makeText(this, "Openings unavailable", Toast.LENGTH_LONG).show()
+                }
+            }
+        })
+    }
+
+    private fun subscribeLoading() {
+        viewModel.onLoadingState.observe(this, {
+            when(it) {
+                LoadingState.Show -> progressBar.visibility = View.VISIBLE
+                LoadingState.Hide -> progressBar.visibility = View.INVISIBLE
+            }
+        })
     }
 
     private fun setUpToolbar() {
@@ -69,9 +105,9 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         }
     }
 
-    private fun setUpOpeningsRecyclerView() {
+    private fun setUpOpeningsRecyclerView(openings: List<OpeningModel>) {
         rvOpenings.layoutManager = LinearLayoutManager(this)
-        //rvOpenings.adapter = OpeningsAdapter()
+        rvOpenings.adapter = OpeningsAdapter(openings, this)
         rvOpenings.addItemDecoration(
             DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
         )

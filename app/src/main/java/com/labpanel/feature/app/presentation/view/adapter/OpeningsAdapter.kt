@@ -1,4 +1,4 @@
-package com.labpanel.feature.professor.presentation.view.adapter
+package com.labpanel.feature.app.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View

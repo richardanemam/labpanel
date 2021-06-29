@@ -112,8 +112,10 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
         openingDbReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 UserAuthHelper.getFirebaseAuth().currentUser?.uid?.let { userId ->
-                    openingDbReference.child(PATH_STRING).child(userId).child(opening.title)
-                        .setValue(opening)
+                    opening.title?.let { title ->
+                        openingDbReference.child(PATH_STRING).child(userId).child(title)
+                            .setValue(opening)
+                    }
                 }
                 showAddValueEventFeedback(getString(R.string.opening_registration_feedback_success_response))
             }
@@ -127,6 +129,7 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     private fun showAddValueEventFeedback(feedbackMessage: String) {
         val feedbackSnackBar =
             Snackbar.make(clSnackbar, feedbackMessage, Snackbar.LENGTH_INDEFINITE)
+        feedbackSnackBar.setActionTextColor(getColor(R.color.white_ffffff))
         feedbackSnackBar.setAction(getString(R.string.opening_registration_feedback_btn)) {
             finish()
             feedbackSnackBar.dismiss()
