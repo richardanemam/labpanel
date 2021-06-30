@@ -4,14 +4,28 @@ import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.labpanel.feature.app.domain.helper.EmailValidationHelper
 import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
+import com.labpanel.feature.professor.domain.states.AddValueEventState
 import com.labpanel.feature.professor.domain.states.OpeningDataState
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
-class OpeningRegistrationViewModel: ViewModel() {
+class OpeningRegistrationViewModel(val repository: ProfessorRepository): ViewModel() {
 
     private val openingDataState: MutableLiveData<OpeningDataState> = MutableLiveData()
     val onOpeningDataState: LiveData<OpeningDataState> = openingDataState
+
+    private val addValueEventState: MutableLiveData<AddValueEventState> = MutableLiveData()
+    val onAddValueEventState: LiveData<AddValueEventState> = addValueEventState
+
+    fun addDataToFirebase(openingModel: OpeningModel) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.addDataToFirebase(openingModel, addValueEventState)
+        }
+    }
 
     fun sendOpeningDataToDatabase(title: String, description: String, activities: String,
                                   prerequisites: String, email: String, degree: String) {
@@ -42,5 +56,4 @@ class OpeningRegistrationViewModel: ViewModel() {
         return OpeningModel(title = title, description = description,
             activities = activities, prerequisites = prerequisites, email = email, degree = degree)
     }
-
 }

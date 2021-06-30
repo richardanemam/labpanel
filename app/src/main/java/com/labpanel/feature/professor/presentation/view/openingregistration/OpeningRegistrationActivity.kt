@@ -8,17 +8,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.labpanel.R
-import com.labpanel.feature.professor.domain.helper.UserAuthHelper
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.professor.domain.states.AddValueEventState
 import com.labpanel.feature.professor.domain.states.OpeningDataState
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
@@ -32,25 +26,20 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     private val btnRegister by lazy { findViewById<Button>(R.id.btn_opening_registration_register) }
     private val clSnackbar by lazy { findViewById<ConstraintLayout>(R.id.cl_opening_registration_parent_view) }
 
-    private val viewModel by lazy { ViewModelProviders.of(this)[OpeningRegistrationViewModel::class.java] }
-    private val openingDataBase by lazy { FirebaseDatabase.getInstance() }
-    private val openingDbReference by lazy { openingDataBase.getReference("RegisteredOpenings") }
+    private val viewModel: OpeningRegistrationViewModel by viewModel()
     private lateinit var degree: String
-
-    companion object {
-        private const val PATH_STRING = "openings"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_opening_registration)
 
-        subscribeUI()
         initViews()
+        subscribeUI()
     }
 
     private fun subscribeUI() {
         subscribeDataValidation()
+        subscribeAddedDataToFirebase()
     }
 
     private fun initViews() {
@@ -60,10 +49,10 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     }
 
     private fun subscribeDataValidation() {
-        viewModel.onOpeningDataState.observe(this, Observer {
+        viewModel.onOpeningDataState.observe(this, {
             when (it) {
                 is OpeningDataState.ValidOpeningDataState -> {
-                    addDataToFirebase(it.opening)
+                    viewModel.addDataToFirebase(it.opening)
                 }
                 OpeningDataState.InvalidOpeningDataState -> {
                     handleEmptyTitleInput()
@@ -71,6 +60,19 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
                     handleEmptyActivitiesInput()
                     handleEmptyPrerequisitesInput()
                     handleEmptyEmailInput()
+                }
+            }
+        })
+    }
+
+    private fun subscribeAddedDataToFirebase() {
+        viewModel.onAddValueEventState.observe(this, {
+            when (it) {
+                AddValueEventState.DataChanged -> {
+                    showAddValueEventFeedback(getString(R.string.opening_registration_feedback_success_response))
+                }
+                AddValueEventState.Cancelled -> {
+                    showAddValueEventFeedback(getString(R.string.opening_registration_feedback_error_response))
                 }
             }
         })
@@ -106,24 +108,6 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
                 degree
             )
         }
-    }
-
-    private fun addDataToFirebase(opening: OpeningModel) {
-        openingDbReference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                UserAuthHelper.getFirebaseAuth().currentUser?.uid?.let { userId ->
-                    opening.title?.let { title ->
-                        openingDbReference.child(PATH_STRING).child(userId).child(title)
-                            .setValue(opening)
-                    }
-                }
-                showAddValueEventFeedback(getString(R.string.opening_registration_feedback_success_response))
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                showAddValueEventFeedback(getString(R.string.opening_registration_feedback_error_response))
-            }
-        })
     }
 
     private fun showAddValueEventFeedback(feedbackMessage: String) {

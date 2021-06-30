@@ -4,6 +4,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
+import com.labpanel.feature.professor.presentation.view.openingregistration.OpeningRegistrationViewModel
 import com.labpanel.feature.professor.presentation.view.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
@@ -15,9 +16,14 @@ val professorModule: Module = module {
     single { FirebaseDatabase.getInstance() }
     single { FirebaseDatabase.getInstance().getReference("RegisteredOpenings") }
     single { ProfessorRepository(auth = get(), databaseReference = get()) }
+
     viewModel {
         ProfileViewModel(
             repository = get()
         )
+    }
+
+    viewModel {
+        OpeningRegistrationViewModel(repository = get())
     }
 }

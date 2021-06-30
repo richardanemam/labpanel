@@ -26,3 +26,8 @@ sealed class OpeningsState {
     object UnavailableOpenings: OpeningsState()
     data class AvailableOpenings(val openings: List<OpeningModel>): OpeningsState()
 }
+
+sealed class AddValueEventState {
+    object DataChanged: AddValueEventState()
+    object Cancelled: AddValueEventState()
+}
