@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labpanel.feature.app.domain.helper.EmailValidationHelper
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.domain.helper.RegexHelper
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
 import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
 import com.labpanel.feature.professor.domain.states.AddValueEventState
 import com.labpanel.feature.professor.domain.states.OpeningDataState
@@ -21,7 +21,7 @@ class OpeningRegistrationViewModel(val repository: ProfessorRepository): ViewMod
     private val addValueEventState: MutableLiveData<AddValueEventState> = MutableLiveData()
     val onAddValueEventState: LiveData<AddValueEventState> = addValueEventState
 
-    fun addDataToFirebase(openingModel: OpeningModel) {
+    fun addDataToFirebase(openingModel: OpeningsDataModel) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addDataToFirebase(openingModel, addValueEventState)
         }
@@ -40,7 +40,7 @@ class OpeningRegistrationViewModel(val repository: ProfessorRepository): ViewMod
 
     }
 
-    fun validateEmail(email: String) = EmailValidationHelper.validateEmail(email)
+    fun validateEmail(email: String) = RegexHelper.validateEmail(email)
 
     private fun validInputData(title: String, description: String, activities: String,
                        prerequisites: String, email: String): Boolean {
@@ -51,9 +51,9 @@ class OpeningRegistrationViewModel(val repository: ProfessorRepository): ViewMod
     }
 
     private fun getOpening(title: String, description: String, activities: String,
-                           prerequisites: String, email: String, degree: String): OpeningModel {
+                           prerequisites: String, email: String, degree: String): OpeningsDataModel {
 
-        return OpeningModel(title = title, description = description,
+        return OpeningsDataModel(title = title, description = description,
             activities = activities, prerequisites = prerequisites, email = email, degree = degree)
     }
 }

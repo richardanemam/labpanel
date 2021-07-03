@@ -7,11 +7,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.labpanel.R
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
 import com.labpanel.feature.app.domain.listener.DetailsListener
 
 class OpeningsAdapter(
-    private val openingsList: List<OpeningModel>,
+    private val openingsList: List<OpeningsDataModel>,
     private val listener: DetailsListener
 ) : RecyclerView.Adapter<OpeningsAdapter.OpeningViewHolder>() {
 

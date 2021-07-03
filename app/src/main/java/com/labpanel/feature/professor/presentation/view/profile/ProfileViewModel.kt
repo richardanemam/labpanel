@@ -4,15 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.labpanel.feature.app.domain.model.DataModel
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
+import com.labpanel.feature.app.domain.model.OpeningsModel
 import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
+import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.professor.domain.states.OpeningsState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.StringBuilder
 import java.util.*
 
-class ProfileViewModel(val repository: ProfessorRepository): ViewModel() {
+class ProfileViewModel(val repository: ProfessorRepository) : ViewModel() {
 
     companion object {
         private const val FIRST_POSITION = 0
@@ -27,12 +31,7 @@ class ProfileViewModel(val repository: ProfessorRepository): ViewModel() {
     fun getOpenings() {
         viewModelScope.launch(Dispatchers.IO) {
             loadingState.postValue(LoadingState.Show)
-            val openings = repository.fetchOpenings()
-            if (openings.isNotEmpty()) {
-                openingsState.postValue(OpeningsState.AvailableOpenings(openings = openings))
-            } else {
-                openingsState.postValue(OpeningsState.UnavailableOpenings)
-            }
+            repository.fetchOpenings(openingsState)
         }.invokeOnCompletion {
             loadingState.postValue(LoadingState.Hide)
         }

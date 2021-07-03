@@ -1,6 +1,6 @@
 package com.labpanel.feature.professor.domain.states
 
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
 
 sealed class EmailState {
     object ValidEmail: EmailState()
@@ -19,12 +19,12 @@ sealed class NameState {
 
 sealed class OpeningDataState {
     object InvalidOpeningDataState : OpeningDataState()
-    data class ValidOpeningDataState(val opening: OpeningModel): OpeningDataState()
+    data class ValidOpeningDataState(val opening: OpeningsDataModel): OpeningDataState()
 }
 
 sealed class OpeningsState {
     object UnavailableOpenings: OpeningsState()
-    data class AvailableOpenings(val openings: List<OpeningModel>): OpeningsState()
+    data class AvailableOpenings(val data: MutableList<OpeningsDataModel>): OpeningsState()
 }
 
 sealed class AddValueEventState {

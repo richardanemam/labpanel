@@ -20,7 +20,7 @@ import com.google.firebase.ktx.Firebase
 import com.labpanel.R
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.app.domain.listener.DetailsListener
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
 import com.labpanel.feature.app.presentation.view.adapter.OpeningsAdapter
 import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.domain.states.OpeningsState
@@ -63,9 +63,10 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         viewModel.onOpeningsState.observe(this, {
             when (it) {
                 is OpeningsState.AvailableOpenings -> {
-                    setUpOpeningsRecyclerView(it.openings)
+                    setUpOpeningsRecyclerView(it.data)
                 }
                 OpeningsState.UnavailableOpenings -> {
+                    //TODO set a better message
                     Toast.makeText(this, "Openings unavailable", Toast.LENGTH_LONG).show()
                 }
             }
@@ -105,7 +106,7 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         }
     }
 
-    private fun setUpOpeningsRecyclerView(openings: List<OpeningModel>) {
+    private fun setUpOpeningsRecyclerView(openings: List<OpeningsDataModel>) {
         rvOpenings.layoutManager = LinearLayoutManager(this)
         rvOpenings.adapter = OpeningsAdapter(openings, this)
         rvOpenings.addItemDecoration(

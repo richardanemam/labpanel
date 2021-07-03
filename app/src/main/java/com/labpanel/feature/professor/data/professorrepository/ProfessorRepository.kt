@@ -7,50 +7,54 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
-import com.labpanel.feature.app.domain.model.OpeningModel
+import com.labpanel.feature.app.domain.helper.RegexHelper
+import com.labpanel.feature.app.domain.model.OpeningsDataModel
 import com.labpanel.feature.professor.domain.states.AddValueEventState
+import com.labpanel.feature.professor.domain.states.OpeningsState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class ProfessorRepository(val auth: FirebaseAuth, val databaseReference: DatabaseReference) {
 
     companion object {
-        private const val PATH = "RegisteredOpenings"
         private const val TAG = "onCancelled"
     }
 
-    suspend fun fetchOpenings(): List<OpeningModel> {
-        val professorCurrentOpenings = mutableListOf<OpeningModel>()
+    suspend fun fetchOpenings(openingsState: MutableLiveData<OpeningsState>) {
         withContext(Dispatchers.IO) {
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    for (child in snapshot.children) {
-                        child.getValue(OpeningModel::class.java)?.let { opening ->
-                            professorCurrentOpenings.add(
-                                opening
-                            )
+                    auth.currentUser?.uid?.let { uid ->
+                        val openings = mutableListOf<OpeningsDataModel>()
+                        for (child in snapshot.child(uid).children) {
+                            child.getValue(OpeningsDataModel::class.java)?.let { openings.add(it) }
                         }
+                        openingsState.postValue(OpeningsState.AvailableOpenings(data = openings) )
                     }
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.w(TAG, error.message, error.toException())
+                    openingsState.postValue(OpeningsState.UnavailableOpenings)
                 }
             })
         }
-
-        return professorCurrentOpenings
     }
 
-    suspend fun addDataToFirebase(opening: OpeningModel,
-                                  addValueEventState: MutableLiveData<AddValueEventState>) {
+    suspend fun addDataToFirebase(
+        opening: OpeningsDataModel,
+        addValueEventState: MutableLiveData<AddValueEventState>
+    ) {
 
         withContext(Dispatchers.IO) {
             databaseReference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     auth.currentUser?.uid?.let { uid ->
                         opening.title?.let { title ->
-                            databaseReference.child(uid).child(title).setValue(opening)
+                            databaseReference
+                                .child(uid)
+                                .child(RegexHelper.setTitleAsChild(title))
+                                .setValue(opening)
                             addValueEventState.postValue(AddValueEventState.DataChanged)
                         }
                     }
