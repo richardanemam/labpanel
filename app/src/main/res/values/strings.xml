@@ -42,5 +42,7 @@
         <item>Filosofia</item>
     </string-array>
 
+    <!-- ALL OPENINGS -->
+    <string name="all_openings_toolbar_title">Vagas disponíveis</string>
 
 </resources>

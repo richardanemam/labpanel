@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.labpanel.R
 import com.labpanel.feature.professor.presentation.view.auth.login.ProfessorLoginActivity
+import com.labpanel.feature.student.presentation.view.allopenings.AllOpeningsActivity
 
 class  DashboardActivity: AppCompatActivity() {
 
@@ -38,8 +39,7 @@ class  DashboardActivity: AppCompatActivity() {
 
     private fun initAlunoButton() {
         btnAluno.setOnClickListener {
-            //TODO integrate with opportunities screen
-            Toast.makeText(this@DashboardActivity, "TODO integrate with opportunities screen", Toast.LENGTH_LONG).show()
+            startActivity(Intent(this@DashboardActivity, AllOpeningsActivity::class.java))
         }
     }
 
