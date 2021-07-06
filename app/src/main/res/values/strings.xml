@@ -45,4 +45,7 @@
     <!-- ALL OPENINGS -->
     <string name="all_openings_toolbar_title">Vagas disponíveis</string>
 
+    <!-- OPENING INFO -->
+    <string name="opening_info_toolbar_title">Informações da vaga</string>
+
 </resources>

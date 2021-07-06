@@ -1,15 +1,10 @@
 package com.labpanel.feature.app.domain.model
 
+import android.os.Parcelable
 import com.google.firebase.database.IgnoreExtraProperties
+import kotlinx.android.parcel.Parcelize
 
-data class Data(var dataModel: DataModel? = null)
-
-@IgnoreExtraProperties
-data class DataModel(var openings: List<OpeningsModel>? = null)
-
-@IgnoreExtraProperties
-data class OpeningsModel(var opening: List<OpeningsDataModel>? = null)
-
+@Parcelize
 @IgnoreExtraProperties
 data class OpeningsDataModel(var title: String? = null, var description: String? = null, var activities: String? = null,
-                             var prerequisites: String? = null, var email: String? = null, var degree: String? = null)
+                             var prerequisites: String? = null, var email: String? = null, var degree: String? = null): Parcelable

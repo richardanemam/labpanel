@@ -55,6 +55,12 @@
             android:name="com.labpanel.feature.student.presentation.view.allopenings.AllOpeningsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+
+        <activity
+            android:name="com.labpanel.feature.app.presentation.view.openinginfo.OpeningInfoActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
+
     </application>
 
 </manifest>
