@@ -20,7 +20,10 @@ class AllOpeningsViewModel(val repository: StudentRepository): ViewModel() {
 
     fun fetchAllOpenings() {
         viewModelScope.launch(Dispatchers.IO) {
+            loadingState.postValue(LoadingState.Show)
             repository.fetchAllOpenings(openingsState)
+        }.invokeOnCompletion {
+            loadingState.postValue(LoadingState.Hide)
         }
     }
 }
