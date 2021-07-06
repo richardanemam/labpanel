@@ -22,6 +22,7 @@ import com.labpanel.feature.professor.domain.helper.UserAuthHelper
 import com.labpanel.feature.app.domain.listener.DetailsListener
 import com.labpanel.feature.app.domain.model.OpeningsDataModel
 import com.labpanel.feature.app.presentation.view.adapter.OpeningsAdapter
+import com.labpanel.feature.app.presentation.view.openinginfo.OpeningInfoActivity
 import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.domain.states.OpeningsState
 import com.labpanel.feature.professor.presentation.view.openingregistration.OpeningRegistrationActivity
@@ -109,9 +110,6 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
     private fun setUpOpeningsRecyclerView(openings: List<OpeningsDataModel>) {
         rvOpenings.layoutManager = LinearLayoutManager(this)
         rvOpenings.adapter = OpeningsAdapter(openings, this)
-        rvOpenings.addItemDecoration(
-            DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -131,7 +129,9 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         }
     }
 
-    override fun onClickDetailsButton(itemPosition: Int) {
-        TODO("Not yet implemented")
+    override fun onClickDetailsButton(openingInfo: OpeningsDataModel) {
+        val intent = Intent(this, OpeningInfoActivity::class.java)
+        intent.putExtra(OpeningInfoActivity.EXTRA_OPENING_INFO, openingInfo)
+        startActivity(intent)
     }
 }

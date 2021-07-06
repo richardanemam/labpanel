@@ -42,7 +42,7 @@ class OpeningsAdapter(
 
         private fun onClickOpeningDetailsButton() {
             openingDetailsBtn.setOnClickListener {
-                listener.onClickDetailsButton(absoluteAdapterPosition)
+                listener.onClickDetailsButton(openingsList[absoluteAdapterPosition])
             }
         }
     }

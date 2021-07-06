@@ -1,6 +1,7 @@
 package com.labpanel.feature.app.presentation.view.openinginfo
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -50,6 +51,13 @@ class OpeningInfoActivity: AppCompatActivity() {
             title = getString(R.string.opening_info_toolbar_title)
             setDisplayHomeAsUpEnabled(true)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun subscribeBundle() {

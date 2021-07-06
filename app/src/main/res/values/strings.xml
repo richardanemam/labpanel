@@ -32,14 +32,28 @@
     <string name="opening_registration_feedback_btn">Entendi</string>
     <string name="opening_registration_feedback_success_response">Vaga cadastrada com sucesso</string>
     <string-array name="degrees_array">
+        <item>Bacharelado em Ciência e Tecnologia (BC&amp;T)</item>
+        <item>Biotecnologia</item>
         <item>Ciência da Computação</item>
-        <item>Bacharel em Ciência e Tecnologia</item>
-        <item>Biologia</item>
-        <item>Química</item>
+        <item>Ciências Biológicas</item>
         <item>Física</item>
         <item>Matemática</item>
+        <item>Química</item>
         <item>Neurociência</item>
+        <item>Engenharia Ambiental e Urbana</item>
+        <item>Engenharia de Energia</item>
+        <item>Engenharia da Informação</item>
+        <item>Engenharia de Instrumentação, Automação e Robótica</item>
+        <item>Engenharia de Materiais</item>
+        <item>Engenharia Aeroespacial</item>
+        <item>Engenharia Biomédica</item>
+        <item>Engenharia de Gestão</item>
+        <item>Bacharelado em Ciências e Humanidades (BC&amp;H)</item>
+        <item>Ciências Econômicas</item>
         <item>Filosofia</item>
+        <item>Planejamento Territorial</item>
+        <item>Políticas Públicas</item>
+        <item>Relações Internacionais</item>
     </string-array>
 
     <!-- ALL OPENINGS -->
