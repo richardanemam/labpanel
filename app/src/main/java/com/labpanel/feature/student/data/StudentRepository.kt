@@ -23,8 +23,8 @@ class StudentRepository(private val databaseReference: DatabaseReference) {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val allOpenings = mutableListOf<OpeningsDataModel>()
                     for (child in snapshot.children) {
-                        child.children.forEach {
-                            it.getValue(OpeningsDataModel::class.java)?.let { allOpenings.add(it) }
+                        child.children.forEach { childSnapshot ->
+                            childSnapshot.getValue(OpeningsDataModel::class.java)?.let { allOpenings.add(it) }
                         }
                     }
                     openingsState.postValue(OpeningsState.AvailableOpenings(allOpenings))

@@ -73,7 +73,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
     }
 
     private fun subscribeLoadingEvent() {
-        viewModel.onLoadingState.observe(this, Observer {
+        viewModel.onLoadingState.observe(this, {
             when (it) {
                 LoadingState.Show -> binding.progressBar.visibility = VISIBLE
                 LoadingState.Hide -> binding.progressBar.visibility = INVISIBLE
@@ -82,7 +82,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
     }
 
     private fun subscribeEmailValidation() {
-        viewModel.onEmailState.observe(this, Observer {
+        viewModel.onEmailState.observe(this, {
             when (it) {
                 EmailState.ValidEmail -> {
                     isValidEmail = true
@@ -99,7 +99,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
     }
 
     private fun subscribePasswordValidation() {
-        viewModel.onPasswordState.observe(this, Observer {
+        viewModel.onPasswordState.observe(this, {
             when (it) {
                 PasswordState.ValidPassword -> {
                     isValidPassword = true
@@ -128,7 +128,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
                 binding.edtLoginEmail.text.toString().trim(),
                 binding.edtLoginPassword.text.toString().trim()
             )
-                .addOnCompleteListener(this, OnCompleteListener {
+                .addOnCompleteListener(this, {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "logged in from input", Toast.LENGTH_LONG).show()
                         //TODO intent to profile

@@ -54,7 +54,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun subscribeLoadingEvent() {
-        viewModel.onLoadingState.observe(this, Observer {
+        viewModel.onLoadingState.observe(this, {
             when (it) {
                 LoadingState.Show -> binding.progressBar.visibility = View.VISIBLE
                 LoadingState.Hide -> binding.progressBar.visibility = View.INVISIBLE
@@ -63,7 +63,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun subscribeNameValidation() {
-        viewModel.onNameState.observe(this, Observer {
+        viewModel.onNameState.observe(this, {
             when (it) {
                 NameState.ValidName -> {
                     isValidName = true
@@ -81,7 +81,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun subscribeEmailValidation() {
-        viewModel.onEmailState.observe(this, Observer {
+        viewModel.onEmailState.observe(this, {
             when (it) {
                 EmailState.ValidEmail -> {
                     isValidEmail = true
@@ -99,7 +99,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun subscribePasswordValidation() {
-        viewModel.onPasswordState.observe(this, Observer {
+        viewModel.onPasswordState.observe(this, {
             when (it) {
                 PasswordState.ValidPassword -> {
                     isValidPassword = true
@@ -122,7 +122,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
                 getUserInputData().email,
                 getUserInputData().password
             )
-                .addOnCompleteListener(this, OnCompleteListener { task ->
+                .addOnCompleteListener(this, { task ->
                     if (task.isSuccessful) {
                         viewModel.hideLoading()
                         updateUserProfile()

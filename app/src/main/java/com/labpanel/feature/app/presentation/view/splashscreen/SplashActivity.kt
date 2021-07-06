@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel.onSplashScreenState.observe(this, Observer {
+        viewModel.onSplashScreenState.observe(this, {
             when(it) {
                 is SplashViewModel.SplashState.DashboardActivity -> goToDashboardActivity()
             }
