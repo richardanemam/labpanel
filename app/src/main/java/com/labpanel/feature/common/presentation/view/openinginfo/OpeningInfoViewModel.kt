@@ -1,11 +1,11 @@
-package com.labpanel.feature.app.presentation.view.openinginfo
+package com.labpanel.feature.common.presentation.view.openinginfo
 
 import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.labpanel.feature.app.presentation.view.openinginfo.OpeningInfoActivity.Companion.EXTRA_OPENING_INFO
-import com.labpanel.feature.app.presentation.view.viewevents.OnBundle
+import com.labpanel.feature.common.presentation.view.openinginfo.OpeningInfoActivity.Companion.EXTRA_OPENING_INFO
+import com.labpanel.feature.common.presentation.view.viewevents.OnBundle
 
 class OpeningInfoViewModel : ViewModel() {
 

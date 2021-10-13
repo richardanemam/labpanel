@@ -6,9 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
@@ -19,7 +17,7 @@ import com.labpanel.feature.professor.domain.model.UserRegistrationData
 import com.labpanel.feature.professor.domain.states.EmailState
 import com.labpanel.feature.professor.domain.states.NameState
 import com.labpanel.feature.professor.domain.states.PasswordState
-import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
 
 class ProfessorRegistrationActivity : AppCompatActivity() {
 

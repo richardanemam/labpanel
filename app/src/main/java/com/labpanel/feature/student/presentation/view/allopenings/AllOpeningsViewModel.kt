@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.domain.states.OpeningsState
 import com.labpanel.feature.student.data.StudentRepository
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.viewevents
+package com.labpanel.feature.common.presentation.view.viewevents
 
 sealed class LoadingState {
     object Hide: LoadingState()

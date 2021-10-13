@@ -18,11 +18,11 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.labpanel.R
 import com.labpanel.feature.professor.domain.helper.UserAuthHelper
-import com.labpanel.feature.app.domain.listener.DetailsListener
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
-import com.labpanel.feature.app.presentation.view.adapter.OpeningsAdapter
-import com.labpanel.feature.app.presentation.view.openinginfo.OpeningInfoActivity
-import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.common.domain.listener.DetailsListener
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.presentation.view.adapter.OpeningsAdapter
+import com.labpanel.feature.common.presentation.view.openinginfo.OpeningInfoActivity
+import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.domain.states.OpeningsState
 import com.labpanel.feature.professor.presentation.view.openingregistration.OpeningRegistrationActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel

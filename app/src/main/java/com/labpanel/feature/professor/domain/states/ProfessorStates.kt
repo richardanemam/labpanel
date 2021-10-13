@@ -1,6 +1,6 @@
 package com.labpanel.feature.professor.domain.states
 
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
 
 sealed class EmailState {
     object ValidEmail: EmailState()

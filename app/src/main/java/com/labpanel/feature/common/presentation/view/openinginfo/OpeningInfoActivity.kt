@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.openinginfo
+package com.labpanel.feature.common.presentation.view.openinginfo
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.labpanel.R
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
-import com.labpanel.feature.app.presentation.view.viewevents.OnBundle
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.presentation.view.viewevents.OnBundle
 
 class OpeningInfoActivity: AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.uicore.builder
+package com.labpanel.feature.common.presentation.view.uicore.builder
 
 import android.app.AlertDialog
 import android.content.Context

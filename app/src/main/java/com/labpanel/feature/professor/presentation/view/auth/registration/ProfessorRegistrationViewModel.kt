@@ -8,7 +8,7 @@ import com.labpanel.feature.professor.domain.usecase.ProfessorRegistrationUseCas
 import com.labpanel.feature.professor.domain.states.EmailState
 import com.labpanel.feature.professor.domain.states.NameState
 import com.labpanel.feature.professor.domain.states.PasswordState
-import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
 
 class ProfessorRegistrationViewModel: ViewModel() {
 

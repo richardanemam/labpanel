@@ -5,8 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labpanel.feature.app.domain.helper.RegexHelper
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.domain.helper.RegexHelper
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
 import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
 import com.labpanel.feature.professor.domain.states.AddValueEventState
 import com.labpanel.feature.professor.domain.states.OpeningDataState

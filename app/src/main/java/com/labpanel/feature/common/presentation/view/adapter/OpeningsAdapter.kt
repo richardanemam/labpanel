@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.adapter
+package com.labpanel.feature.common.presentation.view.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.labpanel.R
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
-import com.labpanel.feature.app.domain.listener.DetailsListener
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.domain.listener.DetailsListener
 
 class OpeningsAdapter(
     private val openingsList: List<OpeningsDataModel>,

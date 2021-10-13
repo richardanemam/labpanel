@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.dashboard
+package com.labpanel.feature.common.presentation.view.dashboard
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.domain.helper
+package com.labpanel.feature.common.domain.helper
 
 import java.util.*
 import java.util.regex.Pattern

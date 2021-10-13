@@ -1,13 +1,12 @@
-package com.labpanel.feature.app.presentation.view.splashscreen
+package com.labpanel.feature.common.presentation.view.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.labpanel.R
-import com.labpanel.feature.app.presentation.view.dashboard.DashboardActivity
+import com.labpanel.feature.common.presentation.view.dashboard.DashboardActivity
 
 class SplashActivity : AppCompatActivity() {
 

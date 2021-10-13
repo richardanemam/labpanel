@@ -11,11 +11,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.labpanel.R
-import com.labpanel.feature.app.domain.listener.DetailsListener
-import com.labpanel.feature.app.domain.model.OpeningsDataModel
-import com.labpanel.feature.app.presentation.view.adapter.OpeningsAdapter
-import com.labpanel.feature.app.presentation.view.openinginfo.OpeningInfoActivity
-import com.labpanel.feature.app.presentation.view.viewevents.LoadingState
+import com.labpanel.feature.common.domain.listener.DetailsListener
+import com.labpanel.feature.common.domain.model.OpeningsDataModel
+import com.labpanel.feature.common.presentation.view.adapter.OpeningsAdapter
+import com.labpanel.feature.common.presentation.view.openinginfo.OpeningInfoActivity
+import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
 import com.labpanel.feature.professor.domain.states.OpeningsState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

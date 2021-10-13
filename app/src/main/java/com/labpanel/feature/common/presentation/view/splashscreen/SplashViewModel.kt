@@ -1,4 +1,4 @@
-package com.labpanel.feature.app.presentation.view.splashscreen
+package com.labpanel.feature.common.presentation.view.splashscreen
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
