@@ -13,4 +13,4 @@
 /captures
 .externalNativeBuild
 .cxx
-bash.exe.stackdump
+/bash.exe.stackdump
