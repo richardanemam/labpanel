@@ -1,0 +1,64 @@
+ext {
+
+    // Build Tools
+    buildTools = '4.1.3'
+
+    // Kotlin
+    kotlinVersion = '1.5.20'
+
+    // Coroutines
+    coroutines = '1.4.3'
+
+    // Viewmodel Lifecycle
+    viewmodelLifecycle = '2.3.1'
+
+    // AppCompat
+    appCompat = '1.3.1'
+
+    // AndroidX core
+    androidXCore = '1.6.0'
+
+    // Material Design Components
+    materialDesignComponents = '1.4.0'
+
+    // Layout
+    constraintLayout = '2.1.1'
+    recyclerView = '1.2.1'
+    cardView = '1.0.0'
+
+    // Test
+    junit = '4.13.2'
+    extJUnit = '1.1.2'
+    espresso =  '3.4.0'
+
+    // BoM version for the Firebase platform
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    firebaseBoM = '28.0.1'
+
+    // Google Services
+    googleServices = '4.3.10'
+
+    // Koin
+    koin = '3.1.1'
+
+    dependencies = [
+            kotlin                          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+            coroutines                      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
+            viewmodelLifecycle              : "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelLifecycle",
+            appCompat                       : "androidx.appcompat:appcompat:$appCompat",
+            androidXCore                    : "androidx.core:core-ktx:$androidXCore",
+            materialDesignComponents        : "com.google.android.material:material:$materialDesignComponents",
+            constraintLayout                : "androidx.constraintlayout:constraintlayout:$constraintLayout",
+            recyclerView                    : "androidx.recyclerview:recyclerview:$recyclerView",
+            cardView                        : "androidx.cardview:cardview:$cardView",
+            junit                           : "junit:junit:$junit",
+            extJUnit                        : "androidx.test.ext:junit:$extJUnit",
+            espresso                         : "androidx.test.espresso:espresso-core:$espresso",
+            firebaseBoM                     : "com.google.firebase:firebase-bom:$firebaseBoM",
+            firebaseAnalytics               : 'com.google.firebase:firebase-analytics-ktx',
+            firebaseAuthentication          : 'com.google.firebase:firebase-auth-ktx',
+            firebaseRealtimeDatabase        : 'com.google.firebase:firebase-database-ktx',
+            koin                            : "io.insert-koin:koin-android:$koin",
+            koinAndroidCompat               : "io.insert-koin:koin-android-compat:$koin"
+    ]
+}
