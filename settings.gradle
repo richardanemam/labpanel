@@ -1,3 +1,6 @@
 rootProject.name='Lab Panel'
 include ':app'
 include ':home'
+include ':commonresources'
+include ':libraries'
+include ':student'

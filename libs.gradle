@@ -1,0 +1,15 @@
+ext {
+    features = [
+            home        : ":home",
+            student     : ":student",
+            professor   : ":professor"
+    ]
+
+    libraries = [
+            libraries   :":libraries"
+    ]
+
+    commomres = [
+            commomres   :":commonresources"
+    ]
+}
