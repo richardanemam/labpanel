@@ -35,6 +35,7 @@ dependencies {
 
     def dependencies = rootProject.ext.dependencies
 
+    implementation dependencies.viewmodelLifecycle
     implementation dependencies.coroutines
     implementation dependencies.androidXCore
     implementation dependencies.appCompat
