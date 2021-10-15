@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -41,4 +42,7 @@ dependencies {
     testImplementation dependencies.junit
     androidTestImplementation dependencies.extJUnit
     androidTestImplementation dependencies.espresso
+    implementation platform(dependencies.firebaseBoM)
+    implementation dependencies.firebaseRealtimeDatabase
+
 }

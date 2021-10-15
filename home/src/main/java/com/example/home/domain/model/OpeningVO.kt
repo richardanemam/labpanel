@@ -1,4 +1,4 @@
-package com.labpanel.feature.common.domain.model
+package com.example.home.domain.model
 
 import android.os.Parcelable
 import com.google.firebase.database.IgnoreExtraProperties
