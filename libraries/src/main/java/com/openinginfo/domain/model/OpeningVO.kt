@@ -1,4 +1,4 @@
-package com.example.home.domain.model
+package com.openinginfo.domain.model
 
 import android.os.Parcelable
 import com.google.firebase.database.IgnoreExtraProperties
