@@ -44,8 +44,10 @@ dependencies {
     androidTestImplementation dependencies.espresso
     implementation platform(dependencies.firebaseBoM)
     implementation dependencies.firebaseRealtimeDatabase
+    implementation dependencies.viewmodelLifecycle
 
     // Modules
-    implementation project(":app")
+    //implementation project(":app")
+    implementation project(":commonresources")
 
 }
