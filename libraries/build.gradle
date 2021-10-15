@@ -37,6 +37,7 @@ dependencies {
     implementation dependencies.androidXCore
     implementation dependencies.appCompat
     implementation dependencies.materialDesignComponents
+    implementation dependencies.recyclerView
     testImplementation dependencies.junit
     androidTestImplementation dependencies.extJUnit
     androidTestImplementation dependencies.espresso

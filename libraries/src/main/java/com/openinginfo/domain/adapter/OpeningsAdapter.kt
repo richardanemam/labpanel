@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.openinginfo.domain.listener.DetailsListener
 import com.example.libraries.R
+import com.openinginfo.domain.listener.DetailsListener
+import com.openinginfo.domain.model.OpeningsDataModel
 
 class OpeningsAdapter(
     private val openingsList: List<OpeningsDataModel>,
