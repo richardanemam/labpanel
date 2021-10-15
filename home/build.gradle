@@ -45,4 +45,7 @@ dependencies {
     implementation platform(dependencies.firebaseBoM)
     implementation dependencies.firebaseRealtimeDatabase
 
+    // Modules
+    implementation project(":app")
+
 }

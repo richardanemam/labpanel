@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="app_name">Labpanel</string>
+
+    <!-- DASHBOARD  -->
+    <string name="dashboard_professor_btn">professor</string>
+    <string name="dashboard_aluno_btn">aluno</string>
+    <string name="dashboard_sobre_o_app">sobre o app</string>
+
+    <!-- OPENING REGISTRATION -->
+    <string name="opening_registration_toolbar_title">Cadastrar nova vaga</string>
+    <string name="opening_registration_opening_title">Título da vaga</string>
+    <string name="opening_registration_description">Descrição da vaga</string>
+    <string name="opening_registration_activities">Atividades</string>
+    <string name="opening_registration_prerequisite">Pré-requisitos</string>
+    <string name="opening_registration_email">E-mail de contato</string>
+    <string name="opening_registration_btn_register">Cadastrar vaga</string>
+    <string name="opening_registration_degrees_title">Cursos</string>
+
+    <!-- ALL OPENINGS -->
+    <string name="all_openings_toolbar_title">Vagas disponíveis</string>
+
+    <!-- OPENING INFO -->
+    <string name="opening_info_toolbar_title">Informações da vaga</string>
+
+</resources>
