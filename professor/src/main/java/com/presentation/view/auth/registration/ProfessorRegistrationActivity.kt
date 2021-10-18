@@ -1,4 +1,4 @@
-package com.labpanel.feature.professor.presentation.view.auth.registration
+package com.presentation.view.auth.registration
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -16,7 +16,6 @@ import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
 import com.presentation.states.NameState
 import com.presentation.states.PasswordState
-import com.presentation.view.auth.registration.ProfessorRegistrationViewModel
 import com.professor.R
 import com.professor.databinding.ActivityProfessorRegistrationBinding
 

@@ -2,55 +2,6 @@
 
     <string name="app_name">Labpanel</string>
 
-    <!-- PROFILE -->
-    <string name="profile_vagas">perfil e minhas vagas</string>
-    <string name="profile_adicionar_novas_vagas">adicionar novas vagas</string>
-    <string name="profile_my_openings">Minhas vagas</string>
-    <string name="profile_registration_menu_signout">Sign out</string>
-    <string name="profile_registration_details_button">ver detalhes</string>
-
-    <!-- OPENING REGISTRATION -->
-    <string name="opening_registration_toolbar_title">Cadastrar nova vaga</string>
-    <string name="opening_registration_opening_title">Título da vaga</string>
-    <string name="opening_registration_description">Descrição da vaga</string>
-    <string name="opening_registration_activities">Atividades</string>
-    <string name="opening_registration_prerequisite">Pré-requisitos</string>
-    <string name="opening_registration_email">E-mail de contato</string>
-    <string name="opening_registration_btn_register">Cadastrar vaga</string>
-    <string name="opening_registration_degrees_title">Cursos</string>
-    <string name="opening_registration_title_error">Por favor, insira um título para a vaga</string>
-    <string name="opening_registration_description_error">Por favor, insira uma descrição para a vaga</string>
-    <string name="opening_registration_activities_error">Por favor, insira as atividades à serem realizadas</string>
-    <string name="opening_registration_prerequisite_error">Por favor, insira os pré-requisitos</string>
-    <string name="opening_registration_email_error">Por favor, insira um e-mail de contato válido</string>
-    <string name="opening_registration_feedback_error_response">Ops, algo deu errado! Tente novamente mais tarde</string>
-    <string name="opening_registration_feedback_btn">Entendi</string>
-    <string name="opening_registration_feedback_success_response">Vaga cadastrada com sucesso</string>
-    <string-array name="degrees_array">
-        <item>Bacharelado em Ciência e Tecnologia (BC&amp;T)</item>
-        <item>Biotecnologia</item>
-        <item>Ciência da Computação</item>
-        <item>Ciências Biológicas</item>
-        <item>Física</item>
-        <item>Matemática</item>
-        <item>Química</item>
-        <item>Neurociência</item>
-        <item>Engenharia Ambiental e Urbana</item>
-        <item>Engenharia de Energia</item>
-        <item>Engenharia da Informação</item>
-        <item>Engenharia de Instrumentação, Automação e Robótica</item>
-        <item>Engenharia de Materiais</item>
-        <item>Engenharia Aeroespacial</item>
-        <item>Engenharia Biomédica</item>
-        <item>Engenharia de Gestão</item>
-        <item>Bacharelado em Ciências e Humanidades (BC&amp;H)</item>
-        <item>Ciências Econômicas</item>
-        <item>Filosofia</item>
-        <item>Planejamento Territorial</item>
-        <item>Políticas Públicas</item>
-        <item>Relações Internacionais</item>
-    </string-array>
-
     <!-- ALL OPENINGS -->
     <string name="all_openings_toolbar_title">Vagas disponíveis</string>
 

@@ -39,6 +39,7 @@ android {
 dependencies {
 
     def dependencies = rootProject.ext.dependencies
+    def modules = rootProject.ext.modules
 
     // Viewmodel lifecycle
     implementation dependencies.viewmodelLifecycle
@@ -76,6 +77,6 @@ dependencies {
     implementation dependencies.firebaseRealtimeDatabase
 
     //Modules
-    implementation project(":libraries")
-    implementation project(":commonresources")
+    implementation project(modules.libraries)
+    implementation project(modules.commonres)
 }
