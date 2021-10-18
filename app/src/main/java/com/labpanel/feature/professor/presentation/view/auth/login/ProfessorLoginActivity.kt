@@ -140,7 +140,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
     }
 
     private fun createAnAccount() {
-        binding.btnLoginRegister.setOnClickListener {
+        binding.btnRegisterToTheApp.setOnClickListener {
             startActivity(
                 Intent(
                     this@ProfessorLoginActivity,
