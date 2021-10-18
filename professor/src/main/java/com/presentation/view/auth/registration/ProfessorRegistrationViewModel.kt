@@ -1,14 +1,14 @@
-package com.labpanel.feature.professor.presentation.view.auth.registration
+package com.presentation.view.auth.registration
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.domain.model.UserRegistrationData
-import com.labpanel.feature.professor.domain.usecase.ProfessorRegistrationUseCase
-import com.labpanel.feature.professor.domain.states.EmailState
-import com.labpanel.feature.professor.domain.states.NameState
-import com.labpanel.feature.professor.domain.states.PasswordState
-import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
+import com.domain.usecase.ProfessorRegistrationUseCase
+import com.presentation.states.EmailState
+import com.presentation.states.LoadingState
+import com.presentation.states.NameState
+import com.presentation.states.PasswordState
 
 class ProfessorRegistrationViewModel: ViewModel() {
 

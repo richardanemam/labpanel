@@ -17,7 +17,6 @@ import com.domain.helper.UserAuthHelper
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.labpanel.feature.professor.presentation.view.profile.ProfileViewModel
 import com.openinginfo.domain.adapter.OpeningsAdapter
 import com.openinginfo.domain.listener.DetailsListener
 import com.openinginfo.domain.model.OpeningsDataModel

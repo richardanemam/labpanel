@@ -1,15 +1,15 @@
-package com.labpanel.feature.professor.presentation.view.openingregistration
+package com.presentation.view.openingregistration
 
 import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labpanel.feature.common.domain.helper.RegexHelper
-import com.labpanel.feature.common.domain.model.OpeningsDataModel
-import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
-import com.labpanel.feature.professor.domain.states.AddValueEventState
-import com.labpanel.feature.professor.domain.states.OpeningDataState
+import com.data.ProfessorRepository
+import com.domain.helper.RegexHelper
+import com.openinginfo.domain.model.OpeningsDataModel
+import com.presentation.states.AddValueEventState
+import com.presentation.states.OpeningDataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

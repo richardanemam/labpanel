@@ -1,12 +1,12 @@
-package com.labpanel.feature.professor.presentation.view.profile
+package com.presentation.view.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
-import com.labpanel.feature.professor.data.professorrepository.ProfessorRepository
-import com.labpanel.feature.professor.domain.states.OpeningsState
+import com.data.ProfessorRepository
+import com.openinginfo.presentation.states.OpeningsState
+import com.presentation.states.LoadingState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.StringBuilder

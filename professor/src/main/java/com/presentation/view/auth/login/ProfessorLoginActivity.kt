@@ -14,11 +14,11 @@ import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.domain.model.UserLoginData
-import com.labpanel.feature.professor.presentation.view.auth.login.ProfessorLoginViewModel
 import com.labpanel.feature.professor.presentation.view.auth.registration.ProfessorRegistrationActivity
 import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
 import com.presentation.states.PasswordState
+import com.presentation.view.profile.ProfileActivity
 import com.professor.R
 import com.professor.databinding.ActivityProfessorLoginBinding
 

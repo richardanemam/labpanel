@@ -11,13 +11,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.labpanel.R
-import com.labpanel.databinding.ActivityProfessorRegistrationBinding
 import com.domain.model.UserRegistrationData
-import com.labpanel.feature.professor.domain.states.EmailState
-import com.labpanel.feature.professor.domain.states.NameState
-import com.labpanel.feature.professor.domain.states.PasswordState
-import com.labpanel.feature.common.presentation.view.viewevents.LoadingState
+import com.presentation.states.EmailState
+import com.presentation.states.LoadingState
+import com.presentation.states.NameState
+import com.presentation.states.PasswordState
+import com.presentation.view.auth.registration.ProfessorRegistrationViewModel
+import com.professor.R
+import com.professor.databinding.ActivityProfessorRegistrationBinding
 
 class ProfessorRegistrationActivity : AppCompatActivity() {
 

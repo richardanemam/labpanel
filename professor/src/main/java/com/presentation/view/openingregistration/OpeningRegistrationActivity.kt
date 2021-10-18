@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
-import com.labpanel.feature.professor.presentation.view.openingregistration.OpeningRegistrationViewModel
 import com.presentation.states.AddValueEventState
 import com.presentation.states.OpeningDataState
 import com.professor.R
