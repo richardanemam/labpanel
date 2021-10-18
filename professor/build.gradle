@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -29,11 +30,21 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
 
     def dependencies = rootProject.ext.dependencies
+
+    // Viewmodel lifecycle
+    implementation dependencies.viewmodelLifecycle
+
+    // Coroutines
+    implementation dependencies.coroutines
 
     // AndroidX Core
     implementation dependencies.androidXCore
@@ -63,4 +74,8 @@ dependencies {
 
     // Declare the dependency for the Realtime Database library
     implementation dependencies.firebaseRealtimeDatabase
+
+    //Modules
+    implementation project(":libraries")
+    implementation project(":commonresources")
 }
