@@ -1,4 +1,4 @@
-package com.labpanel.feature.common.presentation.view.splashscreen
+package com.labpanel.feature.splashscreen.presentation.view.splashscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.home.presentation.view.dashboard.DashboardActivity
 import com.labpanel.R
+import com.labpanel.feature.splashscreen.presentation.view.viewevents.SplashState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
     private fun subscribeSplashScreen() {
         viewModel.onSplashScreenState.observe(this, {
             when(it) {
-                is SplashViewModel.SplashState.DashboardActivity -> goToDashboardActivity()
+                is SplashState.OpenDashboard -> goToDashboardActivity()
             }
         })
     }

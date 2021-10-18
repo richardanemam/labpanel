@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.home.R
 import com.example.home.databinding.ActivityDashboardBinding
 import com.presentation.view.AllOpeningsActivity
 import com.presentation.view.auth.login.ProfessorLoginActivity

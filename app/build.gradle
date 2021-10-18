@@ -90,4 +90,6 @@ dependencies {
     // Modules
     implementation project(modules.home)
     implementation project(modules.professor)
+    implementation project(modules.student)
+    implementation project(modules.commonres)
 }
