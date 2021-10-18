@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AUTHENTICATION -->
+    <string name="auth_email_hint">professor@ufabc.edu.br</string>
+    <string name="auth_password_hint">senha</string>
+    <string name="auth_invalid_email_error">Por favor, digite um e-mail com o domínio ufabc.edu.br</string>
+    <string name="auth_invalid_password_error">Por favor, digite uma senha com pelo menos 6 digitos</string>
+
+    <!-- PROFESSOR LOGIN -->
+    <string name="login_continue">continuar</string>
+    <string name="login_signup">Não possui uma conta? <b>Registre-se</b></string>
+    <string name="login_forgot_password"><b>Esqueceu a senha?</b></string>
+    <string name="login_non_existent_account_dialog_title">Conta de usuário não existente</string>
+    <string name="login_non_existent_account_dialog_messagem">Não foi possível encontrar uma conta associada a este e-mail. Gostaria de criar uma conta de usuário?</string>
+    <string name="login_non_existent_account_dialog_positive_btn">sim</string>
+    <string name="login_non_existent_account_dialog_negative_btn">não</string>
+
+    <!-- PROFESSOR REGISTRATION -->
+    <string name="registration_name_hint">nome completo</string>
+    <string name="registration_signin_instead">Já possui uma conta? <b>Faça o login</b></string>
+    <string name="registration_already_user">Usuário já esta cadastrado</string>
+    <string name="registration_cancel">cancelar</string>
+    <string name="registration_create_account">criar conta</string>
+    <string name="registration_empty_name_input_error">Por favor, insira um nome</string>
+    <string name="registration_error">Não foi possível realizar o cadastro, tente novamente mais tarde</string>
+    <string name="registration_error_btn_text">OK</string>
+
+    <!-- OPENING REGISTRATION -->
+    <string name="opening_registration_toolbar_title">Cadastrar nova vaga</string>
+    <string name="opening_registration_opening_title">Título da vaga</string>
+    <string name="opening_registration_description">Descrição da vaga</string>
+    <string name="opening_registration_activities">Atividades</string>
+    <string name="opening_registration_prerequisite">Pré-requisitos</string>
+    <string name="opening_registration_email">E-mail de contato</string>
+    <string name="opening_registration_btn_register">Cadastrar vaga</string>
+    <string name="opening_registration_degrees_title">Cursos</string>
+    <string name="opening_registration_title_error">Por favor, insira um título para a vaga</string>
+    <string name="opening_registration_description_error">Por favor, insira uma descrição para a vaga</string>
+    <string name="opening_registration_activities_error">Por favor, insira as atividades à serem realizadas</string>
+    <string name="opening_registration_prerequisite_error">Por favor, insira os pré-requisitos</string>
+    <string name="opening_registration_email_error">Por favor, insira um e-mail de contato válido</string>
+    <string name="opening_registration_feedback_error_response">Ops, algo deu errado! Tente novamente mais tarde</string>
+    <string name="opening_registration_feedback_btn">Entendi</string>
+    <string name="opening_registration_feedback_success_response">Vaga cadastrada com sucesso</string>
+    <string-array name="degrees_array">
+        <item>Bacharelado em Ciência e Tecnologia (BC&amp;T)</item>
+        <item>Biotecnologia</item>
+        <item>Ciência da Computação</item>
+        <item>Ciências Biológicas</item>
+        <item>Física</item>
+        <item>Matemática</item>
+        <item>Química</item>
+        <item>Neurociência</item>
+        <item>Engenharia Ambiental e Urbana</item>
+        <item>Engenharia de Energia</item>
+        <item>Engenharia da Informação</item>
+        <item>Engenharia de Instrumentação, Automação e Robótica</item>
+        <item>Engenharia de Materiais</item>
+        <item>Engenharia Aeroespacial</item>
+        <item>Engenharia Biomédica</item>
+        <item>Engenharia de Gestão</item>
+        <item>Bacharelado em Ciências e Humanidades (BC&amp;H)</item>
+        <item>Ciências Econômicas</item>
+        <item>Filosofia</item>
+        <item>Planejamento Territorial</item>
+        <item>Políticas Públicas</item>
+        <item>Relações Internacionais</item>
+    </string-array>
+</resources>
