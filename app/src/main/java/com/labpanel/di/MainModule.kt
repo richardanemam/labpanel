@@ -42,7 +42,6 @@ val studentModule: Module = module {
 }
 
 val appModule: Module = module {
-
     viewModel {
         SplashViewModel()
     }

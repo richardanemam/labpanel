@@ -1,6 +1,7 @@
 package com.labpanel.mainapplication
 
 import android.app.Application
+import com.labpanel.di.appModule
 import com.labpanel.di.professorModule
 import com.labpanel.di.studentModule
 import org.koin.android.ext.koin.androidContext
@@ -14,7 +15,7 @@ class MainApplication: Application() {
             androidLogger()
             androidContext(this@MainApplication)
 
-            modules(listOf(professorModule, studentModule))
+            modules(listOf(professorModule, studentModule, appModule))
         }
     }
 }
