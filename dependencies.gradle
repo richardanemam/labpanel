@@ -74,4 +74,12 @@ ext {
             versionCode         : 1,
             versionName         :"1.0"
     ]
+
+    modules = [
+            home        : ":home",
+            student     : ":student",
+            professor   : ":professor",
+            commonres   : ":commonresources",
+            libraries   : ":libraries"
+    ]
 }
