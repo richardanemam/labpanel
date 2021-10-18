@@ -4,22 +4,20 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProviders
+import com.example.home.presentation.view.dashboard.DashboardActivity
 import com.labpanel.R
-import com.labpanel.feature.common.presentation.view.dashboard.DashboardActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashActivity : AppCompatActivity() {
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(this)[SplashViewModel::class.java]
-    }
+    private val viewModel: SplashViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
         statusBarColors()
-        initViewModel()
+        subscribeSplashScreen()
     }
 
     private fun statusBarColors() {
@@ -27,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         window.statusBarColor = getColor(R.color.white_ffffff)
     }
 
-    private fun initViewModel() {
+    private fun subscribeSplashScreen() {
         viewModel.onSplashScreenState.observe(this, {
             when(it) {
                 is SplashViewModel.SplashState.DashboardActivity -> goToDashboardActivity()

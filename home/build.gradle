@@ -35,6 +35,7 @@ android {
 dependencies {
 
     def dependencies = rootProject.ext.dependencies
+    def modules = rootProject.ext.modules
 
     implementation dependencies.androidXCore
     implementation dependencies.appCompat
@@ -47,7 +48,8 @@ dependencies {
     implementation dependencies.viewmodelLifecycle
 
     // Modules
-    //implementation project(":app")
-    implementation project(":commonresources")
+    implementation project(modules.professor)
+    implementation project(modules.student)
+    implementation project(modules.commonres)
 
 }
