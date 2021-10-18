@@ -2,11 +2,6 @@
 
     <string name="app_name">Labpanel</string>
 
-    <!-- DASHBOARD  -->
-    <string name="dashboard_professor_btn">professor</string>
-    <string name="dashboard_aluno_btn">aluno</string>
-    <string name="dashboard_sobre_o_app">sobre o app</string>
-
     <!-- PROFILE -->
     <string name="profile_vagas">perfil e minhas vagas</string>
     <string name="profile_adicionar_novas_vagas">adicionar novas vagas</string>
