@@ -126,7 +126,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
                 binding.edtLoginEmail.text.toString().trim(),
                 binding.edtLoginPassword.text.toString().trim()
             )
-                .addOnCompleteListener(this, {
+                .addOnCompleteListener(this) {
                     if (it.isSuccessful) {
                         Toast.makeText(this, "logged in from input", Toast.LENGTH_LONG).show()
                         //TODO intent to profile
@@ -134,13 +134,13 @@ class ProfessorLoginActivity : AppCompatActivity() {
                         viewModel.hideLoading()
                         nonExistentAccount()
                     }
-                })
+                }
 
         }
     }
 
     private fun createAnAccount() {
-        binding.btnLoginRegister.setOnClickListener {
+        binding.btnRegisterToTheApp.setOnClickListener {
             startActivity(
                 Intent(
                     this@ProfessorLoginActivity,
