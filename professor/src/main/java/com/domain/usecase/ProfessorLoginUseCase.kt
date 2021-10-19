@@ -2,7 +2,7 @@ package com.domain.usecase
 
 import androidx.lifecycle.MutableLiveData
 import com.domain.helper.UserAuthHelper
-import com.domain.model.UserLoginData
+import com.domain.model.UserLogin
 import com.presentation.states.EmailState
 import com.presentation.states.PasswordState
 
@@ -10,9 +10,9 @@ class ProfessorLoginUseCase(
     private val emailState: MutableLiveData<EmailState>,
     private val passwordState: MutableLiveData<PasswordState>) {
 
-    fun validateUserLoginData(userLoginData: UserLoginData) {
-        validateEmail(userLoginData.email)
-        validatePassword(userLoginData.password)
+    fun validateUserLoginData(userLogin: UserLogin) {
+        validateEmail(userLogin.email)
+        validatePassword(userLogin.password)
     }
 
     private fun validateEmail(email: String) {

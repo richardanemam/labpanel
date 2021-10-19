@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.domain.model.UserRegistrationData
+import com.domain.model.UserRegistration
 import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
 import com.presentation.states.NameState
@@ -141,8 +141,8 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
         auth.currentUser?.updateProfile(profileUpdates)
     }
 
-    private fun getUserInputData(): UserRegistrationData {
-        return UserRegistrationData(
+    private fun getUserInputData(): UserRegistration {
+        return UserRegistration(
             name = binding.edtRegistrationName.text.toString().trim(),
             email = binding.edtRegistrationEmail.text.toString().trim(),
             password = binding.edtRegistrationPassword.text.toString().trim()

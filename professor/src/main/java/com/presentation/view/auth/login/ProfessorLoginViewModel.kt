@@ -3,7 +3,7 @@ package com.presentation.view.auth.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.domain.model.UserLoginData
+import com.domain.model.UserLogin
 import com.domain.usecase.ProfessorLoginUseCase
 import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
@@ -30,7 +30,7 @@ class ProfessorLoginViewModel: ViewModel() {
         loadingState.value = LoadingState.Hide
     }
 
-    fun validateUserLoginData(userLoginData: UserLoginData) {
-        useCase.validateUserLoginData(userLoginData)
+    fun validateUserLoginData(userLogin: UserLogin) {
+        useCase.validateUserLoginData(userLogin)
     }
 }

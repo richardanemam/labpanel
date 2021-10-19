@@ -3,7 +3,7 @@ package com.presentation.view.auth.registration
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.domain.model.UserRegistrationData
+import com.domain.model.UserRegistration
 import com.domain.usecase.ProfessorRegistrationUseCase
 import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
@@ -36,7 +36,7 @@ class ProfessorRegistrationViewModel: ViewModel() {
         loadingState.value = LoadingState.Hide
     }
 
-    fun validateUserRegistrationData(userRegistrationData: UserRegistrationData) {
-        useCase.validateUserRegistrationData(userRegistrationData)
+    fun validateUserRegistrationData(userRegistration: UserRegistration) {
+        useCase.validateUserRegistrationData(userRegistration)
     }
 }

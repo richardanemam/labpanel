@@ -2,7 +2,7 @@ package com.domain.usecase
 
 import androidx.lifecycle.MutableLiveData
 import com.domain.helper.UserAuthHelper
-import com.domain.model.UserRegistrationData
+import com.domain.model.UserRegistration
 import com.presentation.states.EmailState
 import com.presentation.states.NameState
 import com.presentation.states.PasswordState
@@ -11,10 +11,10 @@ class ProfessorRegistrationUseCase(private val  nameState: MutableLiveData<NameS
                                    private val emailState: MutableLiveData<EmailState>,
                                    private val passwordState: MutableLiveData<PasswordState>) {
 
-    fun validateUserRegistrationData(userRegistrationData: UserRegistrationData) {
-        validateName(userRegistrationData.name)
-        validateEmail(userRegistrationData.email)
-        validatePassword(userRegistrationData.password)
+    fun validateUserRegistrationData(userRegistration: UserRegistration) {
+        validateName(userRegistration.name)
+        validateEmail(userRegistration.email)
+        validatePassword(userRegistration.password)
     }
 
     private fun validateName(name: String) {

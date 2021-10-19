@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.data.ProfessorRepository
+import com.data.ProfessorRepositoryImpl
 import com.domain.helper.RegexHelper
 import com.openinginfo.domain.model.OpeningsDataModel
 import com.presentation.states.AddValueEventState
@@ -13,7 +13,7 @@ import com.presentation.states.OpeningDataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class OpeningRegistrationViewModel(val repository: ProfessorRepository): ViewModel() {
+class OpeningRegistrationViewModel(val repository: ProfessorRepositoryImpl): ViewModel() {
 
     private val openingDataState: MutableLiveData<OpeningDataState> = MutableLiveData()
     val onOpeningDataState: LiveData<OpeningDataState> = openingDataState

@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.domain.model.UserLoginData
+import com.domain.model.UserLogin
 import com.presentation.view.auth.registration.ProfessorRegistrationActivity
 import com.presentation.states.EmailState
 import com.presentation.states.LoadingState
@@ -151,7 +151,7 @@ class ProfessorLoginActivity : AppCompatActivity() {
     }
 
     private fun sendUserLoginDataToValidation() {
-        val userLoginData = UserLoginData(
+        val userLoginData = UserLogin(
             email = binding.edtLoginEmail.text.toString().trim(),
             password = binding.edtLoginPassword.text.toString().trim()
         )
