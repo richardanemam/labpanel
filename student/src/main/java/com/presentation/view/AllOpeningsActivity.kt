@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.openinginfo.domain.adapter.OpeningsAdapter
 import com.openinginfo.domain.listener.DetailsListener
-import com.openinginfo.domain.model.OpeningsDataModel
+import com.openinginfo.domain.model.OpeningVO
+import com.openinginfo.domain.model.Openings
+import com.openinginfo.presentation.mappers.OpeningDataMapper
 import com.openinginfo.presentation.states.OpeningsState
 import com.openinginfo.presentation.view.OpeningInfoActivity
 import com.presentation.states.LoadingState
@@ -60,7 +62,7 @@ class AllOpeningsActivity: AppCompatActivity(), DetailsListener {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setUpOpeningsRecyclerView(openings: List<OpeningsDataModel>) {
+    private fun setUpOpeningsRecyclerView(openings: List<Openings>) {
         rvAllOpenings.layoutManager = LinearLayoutManager(this)
         rvAllOpenings.adapter = OpeningsAdapter(openings, this)
     }
@@ -78,7 +80,7 @@ class AllOpeningsActivity: AppCompatActivity(), DetailsListener {
         viewModel.onOpeningsState.observe(this, {
             when(it) {
                 is OpeningsState.AvailableOpenings -> {
-                    setUpOpeningsRecyclerView(it.data)
+                    setUpOpeningsRecyclerView(it.openings)
                 }
                 OpeningsState.UnavailableOpenings -> {
                     Toast.makeText(this, "Openings unavailable", Toast.LENGTH_LONG).show()
@@ -87,9 +89,9 @@ class AllOpeningsActivity: AppCompatActivity(), DetailsListener {
         })
     }
 
-    override fun onClickDetailsButton(openingInfo: OpeningsDataModel) {
+    override fun onClickDetailsButton(openingInfo: Openings) {
         val intent = Intent(this, OpeningInfoActivity::class.java)
-        intent.putExtra(OpeningInfoActivity.EXTRA_OPENING_INFO, openingInfo)
+        intent.putExtra(OpeningInfoActivity.EXTRA_OPENING_INFO, OpeningDataMapper.map(openingInfo))
         startActivity(intent)
     }
 }

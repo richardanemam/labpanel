@@ -3,6 +3,7 @@ package com.di
 import com.data.api.ProfessorFirebaseService
 import com.data.mappers.OpeningsMapper
 import com.data.repository.ProfessorRepositoryImpl
+import com.domain.repository.ProfessorRepository
 import com.domain.usecase.OpeningRegistrationUseCase
 import com.domain.usecase.ProfileUseCase
 import com.google.firebase.auth.ktx.auth
@@ -20,7 +21,7 @@ val professorModule: Module = module {
     factory { FirebaseDatabase.getInstance() }
     factory { FirebaseDatabase.getInstance().getReference("RegisteredOpenings") }
     factory { ProfessorFirebaseService(auth = get(), databaseReference = get()) }
-    factory {
+    factory<ProfessorRepository> {
         ProfessorRepositoryImpl(
             professorFirebaseService = get(),
             openingsMapper = OpeningsMapper()

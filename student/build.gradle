@@ -48,5 +48,8 @@ dependencies {
     implementation dependencies.koin
     implementation dependencies.koinAndroidCompat
 
+    // Gson
+    implementation dependencies.gson
+
     implementation project(":libraries")
 }

@@ -1,10 +1,10 @@
 package com.openinginfo.presentation.states
 
-import com.openinginfo.domain.model.OpeningVO
+import com.openinginfo.domain.model.Openings
 
 sealed class OpeningsState {
     object UnavailableOpenings: OpeningsState()
-    data class AvailableOpenings(val data: MutableList<OpeningVO>): OpeningsState()
+    data class AvailableOpenings(val openings: List<Openings>): OpeningsState()
 }
 
 sealed class OnBundle {

@@ -1,6 +1,5 @@
 package com.domain.usecase
 
-import com.data.model.Opening
 import com.domain.repository.ProfessorRepository
 import java.lang.StringBuilder
 import java.util.*
@@ -12,7 +11,6 @@ class ProfileUseCase(val repository: ProfessorRepository) {
     }
 
     suspend fun fetchOpeningsFromFirebase() = repository.fetchOpenings()
-    suspend fun addDataToFirebase(opening: Opening) = repository.addDataToFirebase(opening)
 
     fun getInitials(name: String): String {
         val builder = StringBuilder()
