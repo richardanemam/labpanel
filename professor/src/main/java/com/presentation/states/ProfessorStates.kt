@@ -1,7 +1,7 @@
 package com.presentation.states
 
+import com.data.model.Opening
 import com.openinginfo.domain.model.Openings
-import com.openinginfo.domain.model.OpeningVO
 
 sealed class LoadingState {
     object Hide: LoadingState()
@@ -25,12 +25,12 @@ sealed class NameState {
 
 sealed class OpeningDataState {
     object InvalidOpeningDataState : OpeningDataState()
-    data class ValidOpeningDataState(val opening: OpeningVO): OpeningDataState()
+    data class ValidOpeningDataState(val opening: Opening): OpeningDataState()
 }
 
-sealed class AddValueEventState {
-    object DataChanged: AddValueEventState()
-    object Cancelled: AddValueEventState()
+sealed class AddOpeningValueState {
+    object DataChanged: AddOpeningValueState()
+    object Cancelled: AddOpeningValueState()
 }
 
 sealed class ProfessorOpeningsState {

@@ -1,10 +1,10 @@
 package com.data.api
 
 import android.util.Log
-import com.core.Constants.FirebaseResponse
+import com.core.FirebaseResponse
 import com.data.model.Opening
 import com.data.model.OpeningsResponse
-import com.domain.helper.RegexHelper
+import com.domain.extensions.setAsChild
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -53,7 +53,7 @@ class FirebaseService(val auth: FirebaseAuth, val databaseReference: DatabaseRef
                         opening.title?.let { title ->
                             databaseReference
                                 .child(uid)
-                                .child(RegexHelper.setTitleAsChild(title))
+                                .child(title.setAsChild())
                                 .setValue(opening)
                         }
                     }

@@ -3,6 +3,7 @@ package com.di
 import com.data.api.FirebaseService
 import com.data.mappers.OpeningsMapper
 import com.data.repository.ProfessorRepositoryImpl
+import com.domain.usecase.OpeningRegistrationUseCase
 import com.domain.usecase.ProfileUseCase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
@@ -26,9 +27,10 @@ val professorModule: Module = module {
         )
     }
     factory {
-        ProfileUseCase(
-            repository = get()
-        )
+        ProfileUseCase(repository = get())
+    }
+    factory {
+        OpeningRegistrationUseCase(repository = get())
     }
 
     viewModel {
@@ -38,6 +40,6 @@ val professorModule: Module = module {
     }
 
     viewModel {
-        OpeningRegistrationViewModel(repository = get())
+        OpeningRegistrationViewModel(useCase = get())
     }
 }

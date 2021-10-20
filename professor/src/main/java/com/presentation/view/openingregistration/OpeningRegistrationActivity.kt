@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.snackbar.Snackbar
-import com.presentation.states.AddValueEventState
+import com.presentation.states.AddOpeningValueState
 import com.presentation.states.OpeningDataState
 import com.professor.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -66,12 +66,12 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     }
 
     private fun subscribeAddedDataToFirebase() {
-        viewModel.onAddValueEventState.observe(this, {
+        viewModel.onAddOpeningOpeningValueState.observe(this, {
             when (it) {
-                AddValueEventState.DataChanged -> {
+                AddOpeningValueState.DataChanged -> {
                     showAddValueEventFeedback(getString(R.string.opening_registration_feedback_success_response))
                 }
-                AddValueEventState.Cancelled -> {
+                AddOpeningValueState.Cancelled -> {
                     showAddValueEventFeedback(getString(R.string.opening_registration_feedback_error_response))
                 }
             }
@@ -101,7 +101,7 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
 
     private fun onRegisterButtonClick() {
         btnRegister.setOnClickListener {
-            viewModel.sendOpeningDataToDatabase(
+            viewModel.validateOpeningRegistrationData(
                 edtTitle.text.toString(), edtDescription.text.toString(),
                 edtActivities.text.toString(), edtPrerequisite.text.toString(),
                 edtEmail.text.toString(),
@@ -122,27 +122,27 @@ class OpeningRegistrationActivity : AppCompatActivity(), AdapterView.OnItemSelec
     }
 
     private fun handleEmptyTitleInput() {
-        if (TextUtils.isEmpty(edtTitle.text))
+        if (!viewModel.validateTextInput(edtTitle.text.toString()))
             edtTitle.error = getString(R.string.opening_registration_title_error)
     }
 
     private fun handleEmptyDescriptionInput() {
-        if (TextUtils.isEmpty(edtDescription.text))
+        if (!viewModel.validateTextInput(edtDescription.text.toString()))
             edtDescription.error = getString(R.string.opening_registration_description_error)
     }
 
     private fun handleEmptyActivitiesInput() {
-        if (TextUtils.isEmpty(edtActivities.text))
+        if (!viewModel.validateTextInput(edtActivities.text.toString()))
             edtActivities.error = getString(R.string.opening_registration_activities_error)
     }
 
     private fun handleEmptyPrerequisitesInput() {
-        if (TextUtils.isEmpty(edtPrerequisite.text))
+        if (!viewModel.validateTextInput(edtPrerequisite.text.toString()))
             edtPrerequisite.error = getString(R.string.opening_registration_prerequisite_error)
     }
 
     private fun handleEmptyEmailInput() {
-        if (TextUtils.isEmpty(edtEmail.text) || !viewModel.validateEmail(edtEmail.text.toString()))
+        if (!viewModel.validateTextInput(edtEmail.text.toString()) || !viewModel.validateEmail(edtEmail.text.toString()))
             edtEmail.error = getString(R.string.opening_registration_email_error)
     }
 

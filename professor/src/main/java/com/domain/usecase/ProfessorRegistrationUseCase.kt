@@ -1,6 +1,8 @@
 package com.domain.usecase
 
 import androidx.lifecycle.MutableLiveData
+import com.domain.extensions.isAValidPasswordLength
+import com.domain.extensions.isAValidProfessorUfabcEmail
 import com.domain.helper.UserAuthHelper
 import com.domain.model.UserRegistration
 import com.presentation.states.EmailState
@@ -26,7 +28,7 @@ class ProfessorRegistrationUseCase(private val  nameState: MutableLiveData<NameS
     }
 
     private fun validateEmail(email: String) {
-        if(UserAuthHelper.validateEmail(email)) {
+        if(email.isAValidProfessorUfabcEmail()) {
             emailState.value = EmailState.ValidEmail
         } else {
             emailState.value = EmailState.InvalidEmail
@@ -34,7 +36,7 @@ class ProfessorRegistrationUseCase(private val  nameState: MutableLiveData<NameS
     }
 
     private fun validatePassword(password: String) {
-        if(UserAuthHelper.validatePassword(password)) {
+        if(password.length.isAValidPasswordLength()) {
             passwordState.value = PasswordState.ValidPassword
         } else {
             passwordState.value = PasswordState.InvalidPassword
