@@ -28,8 +28,8 @@ class AllOpeningsActivity: AppCompatActivity(), DetailsListener {
     private val progressBar by lazy { findViewById<ProgressBar>(R.id.pb_all_openings) }
     private val viewModel: AllOpeningsViewModel by viewModel()
 
-    override fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_openings)
 
         initViews()

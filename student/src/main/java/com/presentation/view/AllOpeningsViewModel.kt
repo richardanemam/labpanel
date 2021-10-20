@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.data.repository.StudentRepositoryImpl
+import com.domain.FirabaseCallback
 import com.domain.usecase.AllOpeningsUseCase
 import com.openinginfo.domain.model.Openings
 import com.openinginfo.presentation.states.OpeningsState
@@ -23,14 +23,17 @@ class AllOpeningsViewModel(private val useCase: AllOpeningsUseCase): ViewModel()
     fun fetchAllOpenings() {
         viewModelScope.launch {
             loadingState.postValue(LoadingState.Show)
-            val allOpenings = useCase.retrieveAllOpenings()
-            openingDataToSubscriber(allOpenings)
+            useCase.retrieveAllOpenings(object: FirabaseCallback {
+                override fun onCallback(openings: List<Openings>) {
+                    openingDataToSubscriber(openings)
+                }
+            })
         }.invokeOnCompletion {
             loadingState.postValue(LoadingState.Hide)
         }
     }
 
-    private fun openingDataToSubscriber(openings: List<Openings>) {
+    private fun openingDataToSubscriber(openings: List<Openings>?) {
         if (openings.isNullOrEmpty()) {
             openingsState.postValue(OpeningsState.UnavailableOpenings)
         } else {
