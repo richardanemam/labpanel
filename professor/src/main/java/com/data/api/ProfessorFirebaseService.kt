@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class FirebaseService(val auth: FirebaseAuth, val databaseReference: DatabaseReference) {
+class ProfessorFirebaseService(val auth: FirebaseAuth, val databaseReference: DatabaseReference) {
 
     companion object {
         private const val TAG = "onCancelled"

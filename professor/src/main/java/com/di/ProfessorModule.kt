@@ -1,6 +1,6 @@
 package com.di
 
-import com.data.api.FirebaseService
+import com.data.api.ProfessorFirebaseService
 import com.data.mappers.OpeningsMapper
 import com.data.repository.ProfessorRepositoryImpl
 import com.domain.usecase.OpeningRegistrationUseCase
@@ -19,10 +19,10 @@ val professorModule: Module = module {
     factory { Firebase.auth }
     factory { FirebaseDatabase.getInstance() }
     factory { FirebaseDatabase.getInstance().getReference("RegisteredOpenings") }
-    factory { FirebaseService(auth = get(), databaseReference = get()) }
+    factory { ProfessorFirebaseService(auth = get(), databaseReference = get()) }
     factory {
         ProfessorRepositoryImpl(
-            firebaseService = get(),
+            professorFirebaseService = get(),
             openingsMapper = OpeningsMapper()
         )
     }
