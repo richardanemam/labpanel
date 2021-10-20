@@ -120,7 +120,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
                 getUserInputData().email,
                 getUserInputData().password
             )
-                .addOnCompleteListener(this, { task ->
+                .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         viewModel.hideLoading()
                         updateUserProfile()
@@ -129,7 +129,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
                         viewModel.hideLoading()
                         tryLater()
                     }
-                })
+                }
         }
     }
 

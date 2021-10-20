@@ -1,6 +1,9 @@
 package com.di
 
-import com.data.ProfessorRepositoryImpl
+import com.data.api.FirebaseService
+import com.data.mappers.OpeningsMapper
+import com.data.repository.ProfessorRepositoryImpl
+import com.domain.usecase.ProfileUseCase
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
@@ -12,14 +15,25 @@ import org.koin.dsl.module
 
 val professorModule: Module = module {
 
-    single { Firebase.auth }
-    single { FirebaseDatabase.getInstance() }
-    single { FirebaseDatabase.getInstance().getReference("RegisteredOpenings") }
-    single { ProfessorRepositoryImpl(auth = get(), databaseReference = get()) }
+    factory { Firebase.auth }
+    factory { FirebaseDatabase.getInstance() }
+    factory { FirebaseDatabase.getInstance().getReference("RegisteredOpenings") }
+    factory { FirebaseService(auth = get(), databaseReference = get()) }
+    factory {
+        ProfessorRepositoryImpl(
+            firebaseService = get(),
+            openingsMapper = OpeningsMapper()
+        )
+    }
+    factory {
+        ProfileUseCase(
+            repository = get()
+        )
+    }
 
     viewModel {
         ProfileViewModel(
-            repository = get()
+            useCase = get()
         )
     }
 

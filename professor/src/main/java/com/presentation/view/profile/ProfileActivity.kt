@@ -6,42 +6,32 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.domain.helper.UserAuthHelper
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.openinginfo.domain.model.Openings
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.openinginfo.domain.adapter.OpeningsAdapter
 import com.openinginfo.domain.listener.DetailsListener
-import com.openinginfo.domain.model.OpeningsDataModel
-import com.openinginfo.presentation.states.OpeningsState
+import com.openinginfo.presentation.mappers.OpeningDataMapper
 import com.openinginfo.presentation.view.OpeningInfoActivity
 import com.presentation.states.LoadingState
+import com.presentation.states.ProfessorOpeningsState
 import com.presentation.view.openingregistration.OpeningRegistrationActivity
 import com.professor.R
+import com.professor.databinding.ActivityProfileBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ProfileActivity : AppCompatActivity(), DetailsListener {
 
-    private val tvName by lazy { findViewById<TextView>(R.id.tv_profile_name) }
-    private val tvEmail by lazy { findViewById<TextView>(R.id.tv_profile_email) }
-    private val tvInitials by lazy { findViewById<TextView>(R.id.tv_profile_initials) }
-    private val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar_id) }
-    private val registrationBtn by lazy { findViewById<FloatingActionButton>(R.id.fab_profile_opening_registration) }
-    private val rvOpenings by lazy { findViewById<RecyclerView>(R.id.rv_profile_openings) }
-    private val progressBar by lazy { findViewById<ProgressBar>(R.id.pb_profile) }
-
+    private val binding by lazy { ActivityProfileBinding.inflate(layoutInflater) }
     private val viewModel: ProfileViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        setContentView(binding.root)
         initViews()
         subscribeUI()
         viewModel.getOpenings()
@@ -60,12 +50,12 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
     }
 
     private fun subscribeOpenings() {
-        viewModel.onOpeningsState.observe(this, {
-            when (it) {
-                is OpeningsState.AvailableOpenings -> {
-                    setUpOpeningsRecyclerView(it.data)
-                }
-                OpeningsState.UnavailableOpenings -> {
+        viewModel.onProfessorOpeningsState.observe(this, {
+            when(it) {
+               is ProfessorOpeningsState.AvailableOpenings -> {
+                   setUpOpeningsRecyclerView(it.professorOpenings)
+               }
+                ProfessorOpeningsState.UnavailableOpenings -> {
                     //TODO set a better message
                     Toast.makeText(this, "Openings unavailable", Toast.LENGTH_LONG).show()
                 }
@@ -75,40 +65,39 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
 
     private fun subscribeLoading() {
         viewModel.onLoadingState.observe(this, {
-            when(it) {
-                LoadingState.Show -> progressBar.visibility = View.VISIBLE
-                LoadingState.Hide -> progressBar.visibility = View.INVISIBLE
+            when (it) {
+                LoadingState.Show -> binding.pbProfile.visibility = View.VISIBLE
+                LoadingState.Hide -> binding.pbProfile.visibility = View.INVISIBLE
             }
         })
     }
 
     private fun setUpToolbar() {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar?.title = getString(R.string.profile_vagas)
+        setSupportActionBar(binding.toolbarId)
+        supportActionBar?.title = getString(R.string.profile_vagas)
     }
 
     private fun setUpProfile() {
-        tvInitials.text = UserAuthHelper
+        binding.tvProfileInitials.text = UserAuthHelper
             .getFirebaseAuth()
             .currentUser
             ?.displayName
             ?.let { viewModel.getInitials(it) }
 
-        tvName.text = UserAuthHelper.getFirebaseAuth().currentUser?.displayName
-        tvEmail.text = UserAuthHelper.getFirebaseAuth().currentUser?.email
+        binding.tvProfileName.text = UserAuthHelper.getFirebaseAuth().currentUser?.displayName
+        binding.tvProfileEmail.text = UserAuthHelper.getFirebaseAuth().currentUser?.email
     }
 
     private fun clickToRegister() {
-        registrationBtn.setOnClickListener {
+        binding.fabProfileOpeningRegistration.setOnClickListener {
             val intent = Intent(this, OpeningRegistrationActivity::class.java)
             startActivity(intent)
         }
     }
 
-    private fun setUpOpeningsRecyclerView(openings: List<OpeningsDataModel>) {
-        rvOpenings.layoutManager = LinearLayoutManager(this)
-        rvOpenings.adapter = OpeningsAdapter(openings, this)
+    private fun setUpOpeningsRecyclerView(openings: List<Openings>) {
+        binding.rvProfileOpenings.layoutManager = LinearLayoutManager(this)
+        binding.rvProfileOpenings.adapter = OpeningsAdapter(openings, this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -128,9 +117,9 @@ class ProfileActivity : AppCompatActivity(), DetailsListener {
         }
     }
 
-    override fun onClickDetailsButton(openingInfo: OpeningsDataModel) {
+    override fun onClickDetailsButton(openingInfo: Openings) {
         val intent = Intent(this, OpeningInfoActivity::class.java)
-        intent.putExtra(OpeningInfoActivity.EXTRA_OPENING_INFO, openingInfo)
+        intent.putExtra(OpeningInfoActivity.EXTRA_OPENING_INFO, OpeningDataMapper.map(openingInfo))
         startActivity(intent)
     }
 }

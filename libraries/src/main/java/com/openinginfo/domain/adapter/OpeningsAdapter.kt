@@ -8,10 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.libraries.R
 import com.openinginfo.domain.listener.DetailsListener
-import com.openinginfo.domain.model.OpeningsDataModel
+import com.openinginfo.domain.model.Openings
 
 class OpeningsAdapter(
-    private val openingsList: List<OpeningsDataModel>,
+    private val openingsList: List<Openings>,
     private val listener: DetailsListener
 ) : RecyclerView.Adapter<OpeningsAdapter.OpeningViewHolder>() {
 

@@ -41,6 +41,9 @@ ext {
     // Koin
     koin = '3.1.1'
 
+    // Gson
+    gson = '2.8.8'
+
     dependencies = [
             kotlin                          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
             coroutines                      : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
@@ -53,13 +56,14 @@ ext {
             cardView                        : "androidx.cardview:cardview:$cardView",
             junit                           : "junit:junit:$junit",
             extJUnit                        : "androidx.test.ext:junit:$extJUnit",
-            espresso                         : "androidx.test.espresso:espresso-core:$espresso",
+            espresso                        : "androidx.test.espresso:espresso-core:$espresso",
             firebaseBoM                     : "com.google.firebase:firebase-bom:$firebaseBoM",
             firebaseAnalytics               : 'com.google.firebase:firebase-analytics-ktx',
             firebaseAuthentication          : 'com.google.firebase:firebase-auth-ktx',
             firebaseRealtimeDatabase        : 'com.google.firebase:firebase-database-ktx',
             koin                            : "io.insert-koin:koin-android:$koin",
-            koinAndroidCompat               : "io.insert-koin:koin-android-compat:$koin"
+            koinAndroidCompat               : "io.insert-koin:koin-android-compat:$koin",
+            gson                            : "com.google.code.gson:gson:$gson"
     ]
 
     config = [

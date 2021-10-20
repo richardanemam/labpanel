@@ -76,6 +76,9 @@ dependencies {
     // Declare the dependency for the Realtime Database library
     implementation dependencies.firebaseRealtimeDatabase
 
+    // Gson
+    implementation dependencies.gson
+
     //Modules
     implementation project(modules.libraries)
     implementation project(modules.commonres)

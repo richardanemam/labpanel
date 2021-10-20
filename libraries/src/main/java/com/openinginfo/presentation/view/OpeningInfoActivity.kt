@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
 import com.example.libraries.R
-import com.openinginfo.domain.model.OpeningsDataModel
+import com.openinginfo.domain.model.OpeningVO
 import com.openinginfo.presentation.states.OnBundle
 
 class OpeningInfoActivity: AppCompatActivity() {
@@ -21,7 +21,7 @@ class OpeningInfoActivity: AppCompatActivity() {
     private val tvOpeningDegrees by lazy { findViewById<TextView>(R.id.tv_opening_info_degrees) }
 
     private val viewModel by lazy { ViewModelProvider(this)[OpeningInfoViewModel::class.java]}
-    private lateinit var openingInfo: OpeningsDataModel
+    private lateinit var openingInfo: OpeningVO
 
     companion object {
         const val EXTRA_OPENING_INFO = "openingInfo"
@@ -79,7 +79,7 @@ class OpeningInfoActivity: AppCompatActivity() {
     }
 
     private fun initExtras() {
-        openingInfo = intent.getParcelableExtra(EXTRA_OPENING_INFO) as OpeningsDataModel
+        openingInfo = intent.getParcelableExtra(EXTRA_OPENING_INFO) as OpeningVO
     }
 
     private fun setViews() {

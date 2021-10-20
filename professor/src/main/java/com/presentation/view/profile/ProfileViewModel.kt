@@ -4,22 +4,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.data.ProfessorRepository
-import com.openinginfo.presentation.states.OpeningsState
+import com.openinginfo.domain.model.Openings
+import com.domain.usecase.ProfileUseCase
 import com.presentation.states.LoadingState
+import com.presentation.states.ProfessorOpeningsState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.StringBuilder
-import java.util.*
 
-class ProfileViewModel(val repository: ProfessorRepository) : ViewModel() {
+class ProfileViewModel(val useCase: ProfileUseCase) : ViewModel() {
 
-    companion object {
-        private const val FIRST_POSITION = 0
-    }
-
-    private val openingsState: MutableLiveData<OpeningsState> = MutableLiveData()
-    val onOpeningsState: LiveData<OpeningsState> = openingsState
+    private val professorOpeningsState: MutableLiveData<ProfessorOpeningsState> = MutableLiveData()
+    val onProfessorOpeningsState: LiveData<ProfessorOpeningsState> = professorOpeningsState
 
     private val loadingState: MutableLiveData<LoadingState> = MutableLiveData()
     val onLoadingState: LiveData<LoadingState> = loadingState
@@ -27,27 +22,20 @@ class ProfileViewModel(val repository: ProfessorRepository) : ViewModel() {
     fun getOpenings() {
         viewModelScope.launch(Dispatchers.IO) {
             loadingState.postValue(LoadingState.Show)
-            repository.fetchOpenings(openingsState)
+            val openings = useCase.fetchOpeningsFromFirebase()
+            openingDataToSubscriber(openings)
         }.invokeOnCompletion {
             loadingState.postValue(LoadingState.Hide)
         }
     }
 
-    fun getInitials(name: String): String {
-        val builder = StringBuilder()
-        val nameParts = name.split(" ").toTypedArray()
-
-        if (nameParts.size > 1) {
-            return builder
-                .append(nameParts[FIRST_POSITION][FIRST_POSITION].toString())
-                .append(nameParts[nameParts.size - 1][FIRST_POSITION].toString())
-                .toString()
-                .toUpperCase(Locale.ROOT)
+    private fun openingDataToSubscriber(openings: List<Openings>) {
+        if (openings.isNullOrEmpty()) {
+            professorOpeningsState.postValue(ProfessorOpeningsState.UnavailableOpenings)
+        } else {
+            professorOpeningsState.postValue(ProfessorOpeningsState.AvailableOpenings(openings))
         }
-
-        return builder
-            .append(nameParts[FIRST_POSITION][FIRST_POSITION].toString())
-            .toString()
-            .toUpperCase(Locale.ROOT)
     }
+
+    fun getInitials(name: String) = useCase.getInitials(name)
 }
