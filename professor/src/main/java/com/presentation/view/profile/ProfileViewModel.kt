@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.core.listener.FirebaseCallback
 import com.openinginfo.domain.model.Openings
 import com.domain.usecase.ProfileUseCase
 import com.presentation.states.LoadingState
@@ -22,8 +23,12 @@ class ProfileViewModel(val useCase: ProfileUseCase) : ViewModel() {
     fun getOpenings() {
         viewModelScope.launch(Dispatchers.IO) {
             loadingState.postValue(LoadingState.Show)
-            val openings = useCase.fetchOpeningsFromFirebase()
-            openingDataToSubscriber(openings)
+            useCase.fetchOpeningsFromFirebase(object: FirebaseCallback {
+                override fun onCallback(openings: List<Openings>) {
+                    openingDataToSubscriber(openings)
+                }
+            })
+
         }.invokeOnCompletion {
             loadingState.postValue(LoadingState.Hide)
         }

@@ -1,9 +1,9 @@
 package com.data.repository
 
+import com.core.listener.FirebaseCallback
 import com.data.api.ProfessorFirebaseService
 import com.data.mappers.OpeningsMapper
 import com.data.model.Opening
-import com.openinginfo.domain.model.Openings
 import com.domain.repository.ProfessorRepository
 
 internal class ProfessorRepositoryImpl(
@@ -11,8 +11,8 @@ internal class ProfessorRepositoryImpl(
     private val openingsMapper: OpeningsMapper
 ): ProfessorRepository {
 
-    override suspend fun fetchOpenings(): List<Openings> {
-         return openingsMapper.map(professorFirebaseService.fetchOpenings())
+    override suspend fun fetchOpenings(firebaseCallback: FirebaseCallback) {
+         professorFirebaseService.fetchOpenings(firebaseCallback, openingsMapper)
     }
 
     override suspend fun addDataToFirebase(opening: Opening): Int {

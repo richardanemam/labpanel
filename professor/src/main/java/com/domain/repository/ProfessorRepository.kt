@@ -1,9 +1,9 @@
 package com.domain.repository
 
+import com.core.listener.FirebaseCallback
 import com.data.model.Opening
-import com.openinginfo.domain.model.Openings
 
 interface ProfessorRepository {
-    suspend fun fetchOpenings(): List<Openings>
+    suspend fun fetchOpenings(firebaseCallback: FirebaseCallback)
     suspend fun addDataToFirebase(opening: Opening): Int
 }

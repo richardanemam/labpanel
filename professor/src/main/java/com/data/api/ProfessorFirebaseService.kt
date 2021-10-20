@@ -2,6 +2,8 @@ package com.data.api
 
 import android.util.Log
 import com.core.FirebaseResponse
+import com.core.listener.FirebaseCallback
+import com.data.mappers.OpeningsMapper
 import com.data.model.Opening
 import com.data.model.OpeningsResponse
 import com.domain.extensions.setAsChild
@@ -19,28 +21,24 @@ class ProfessorFirebaseService(val auth: FirebaseAuth, val databaseReference: Da
         private const val TAG = "onCancelled"
     }
 
-    private val openings = mutableListOf<OpeningsResponse>()
+    suspend fun fetchOpenings(callback: FirebaseCallback, openingsMapper: OpeningsMapper) {
+        withContext(Dispatchers.IO) {
+            databaseReference.addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val allOpenings = mutableListOf<OpeningsResponse>()
+                    auth.currentUser?.uid?.let { uid ->
+                        for (child in snapshot.child(uid).children) {
+                            child.getValue(OpeningsResponse::class.java)?.let { allOpenings.add(it) }
+                        }
+                    }
 
-    private val valueEventListenerForRetrievingData = object: ValueEventListener {
-        override fun onDataChange(snapshot: DataSnapshot) { addResponseOnDataChange(snapshot) }
+                    callback.onCallback(openings = openingsMapper.map(allOpenings))
+                }
 
-        override fun onCancelled(error: DatabaseError) {
-            Log.w(TAG, error.message, error.toException())
-        }
-    }
-
-    private fun addResponseOnDataChange(snapshot: DataSnapshot) {
-        auth.currentUser?.uid?.let { uid ->
-            for (child in snapshot.child(uid).children) {
-                child.getValue(OpeningsResponse::class.java)?.let { openings.add(it) }
-            }
-        }
-    }
-
-    suspend fun fetchOpenings(): List<OpeningsResponse>   {
-        return withContext(Dispatchers.IO) {
-            databaseReference.addValueEventListener(valueEventListenerForRetrievingData)
-            openings
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w(TAG, error.message, error.toException())
+                }
+            })
         }
     }
 

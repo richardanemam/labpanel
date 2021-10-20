@@ -1,5 +1,6 @@
 package com.domain.usecase
 
+import com.core.listener.FirebaseCallback
 import com.domain.repository.ProfessorRepository
 import java.lang.StringBuilder
 import java.util.*
@@ -10,7 +11,7 @@ class ProfileUseCase(val repository: ProfessorRepository) {
         private const val FIRST_POSITION = 0
     }
 
-    suspend fun fetchOpeningsFromFirebase() = repository.fetchOpenings()
+    suspend fun fetchOpeningsFromFirebase(firebaseCallback: FirebaseCallback) = repository.fetchOpenings(firebaseCallback)
 
     fun getInitials(name: String): String {
         val builder = StringBuilder()

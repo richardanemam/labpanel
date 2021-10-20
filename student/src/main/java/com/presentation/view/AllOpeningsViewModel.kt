@@ -4,12 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.domain.FirabaseCallback
+import com.core.listener.FirebaseCallback
 import com.domain.usecase.AllOpeningsUseCase
 import com.openinginfo.domain.model.Openings
 import com.openinginfo.presentation.states.OpeningsState
 import com.presentation.states.LoadingState
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class AllOpeningsViewModel(private val useCase: AllOpeningsUseCase): ViewModel() {
@@ -23,7 +22,7 @@ class AllOpeningsViewModel(private val useCase: AllOpeningsUseCase): ViewModel()
     fun fetchAllOpenings() {
         viewModelScope.launch {
             loadingState.postValue(LoadingState.Show)
-            useCase.retrieveAllOpenings(object: FirabaseCallback {
+            useCase.retrieveAllOpenings(object: FirebaseCallback {
                 override fun onCallback(openings: List<Openings>) {
                     openingDataToSubscriber(openings)
                 }

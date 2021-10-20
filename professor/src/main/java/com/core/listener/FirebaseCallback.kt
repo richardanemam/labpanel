@@ -1,7 +1,7 @@
-package com.domain
+package com.core.listener
 
 import com.openinginfo.domain.model.Openings
 
-interface FirabaseCallback {
+interface FirebaseCallback {
     fun onCallback(openings: List<Openings>)
 }
