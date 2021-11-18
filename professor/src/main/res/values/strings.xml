@@ -24,6 +24,7 @@
     <string name="registration_empty_name_input_error">Por favor, insira um nome</string>
     <string name="registration_error">Não foi possível realizar o cadastro, tente novamente mais tarde</string>
     <string name="registration_error_btn_text">OK</string>
+    <string name="registration_successful_registration">registrado com sucesso</string>
 
     <!-- OPENING REGISTRATION -->
     <string name="opening_registration_toolbar_title">Cadastrar nova vaga</string>

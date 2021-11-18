@@ -115,7 +115,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
     }
 
     private fun createNewAccount() {
-        if (isValidName && isValidEmail && isValidPassword) {
+        if (isAValidInput()) {
             auth.createUserWithEmailAndPassword(
                 getUserInputData().email,
                 getUserInputData().password
@@ -124,7 +124,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         viewModel.hideLoading()
                         updateUserProfile()
-                        Toast.makeText(this, "registrado com sucesso", Toast.LENGTH_LONG).show()
+                        displaySucessfulRegistrationMsg()
                     } else {
                         viewModel.hideLoading()
                         tryLater()
@@ -140,6 +140,13 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
 
         auth.currentUser?.updateProfile(profileUpdates)
     }
+
+    private fun displaySucessfulRegistrationMsg() = Toast.makeText(this,
+        getString(R.string.registration_successful_registration),
+        Toast.LENGTH_LONG
+    ).show()
+
+    private fun isAValidInput(): Boolean =  isValidName && isValidEmail && isValidPassword
 
     private fun getUserInputData(): UserRegistration {
         return UserRegistration(
@@ -166,7 +173,7 @@ class ProfessorRegistrationActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(R.string.registration_error)
         builder.setPositiveButton(R.string.registration_error_btn_text) { _: DialogInterface, _: Int ->
-           finish()
+            finish()
         }
         builder.create().show()
     }

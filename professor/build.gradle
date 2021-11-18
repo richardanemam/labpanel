@@ -61,6 +61,10 @@ dependencies {
     androidTestImplementation dependencies.extJUnit
     androidTestImplementation dependencies.espresso
 
+    // Mockk
+    testImplementation dependencies.mockk
+    testImplementation dependencies.mockkAgent
+
     // Koin main features for Android (Scope,ViewModel ...)
     implementation dependencies.koin
     implementation dependencies.koinAndroidCompat

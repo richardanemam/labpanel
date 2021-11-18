@@ -30,6 +30,7 @@ ext {
     junit = '4.13.2'
     extJUnit = '1.1.3'
     espresso =  '3.4.0'
+    mockk = '1.12.1'
 
     // BoM version for the Firebase platform
     // When using the BoM, you don't specify versions in Firebase library dependencies
@@ -63,7 +64,9 @@ ext {
             firebaseRealtimeDatabase        : 'com.google.firebase:firebase-database-ktx',
             koin                            : "io.insert-koin:koin-android:$koin",
             koinAndroidCompat               : "io.insert-koin:koin-android-compat:$koin",
-            gson                            : "com.google.code.gson:gson:$gson"
+            gson                            : "com.google.code.gson:gson:$gson",
+            mockk                           : "io.mockk:mockk:$mockk",
+            mockkAgent                      : "io.mockk:mockk-agent-jvm:$mockk"
     ]
 
     config = [
